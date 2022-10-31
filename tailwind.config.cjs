@@ -11,6 +11,7 @@ module.exports = {
       },
       boxShadow: {
         'banner': '180px 30px 140px 0px ;',
+        'favChannel': '0px 0px 10px 2px ;',
       }
     },
   },

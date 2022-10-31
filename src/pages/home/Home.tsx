@@ -1,13 +1,18 @@
 
+import FamilyFriendly from "./components/FamilyFriendly";
+import FavChannels from "./components/FavChannels";
+import Firetv from "./components/Firetv";
+import HomeFooter from "./components/HomeFooter";
 import Welcome from "./components/Welcome";
 const Home = () => {
   return (
-    <>
+    <div className="h-[180rem] bg-[#222222]">
       <Welcome/>
-      <div className="absolute h-[537px] w-full bg-white mt-[10.7rem]"></div>
-      <div className="h-[25rem] w-full bg-black"></div>
-      <div className="h-[25rem] w-full bg-[black]"></div>
-    </>
+      <FavChannels/>
+      <Firetv/>
+      <FamilyFriendly/>
+      <HomeFooter/>
+    </div>
   );
 };
 
