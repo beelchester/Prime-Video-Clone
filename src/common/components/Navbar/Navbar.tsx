@@ -21,7 +21,7 @@ const Navbar: React.FC = () => {
             Home
           </NavLink>
           <NavLink
-            to={"/"}
+            to={"/store"}
             className={"font-[300] text-[1.05rem] mx-[0.485rem]"}
           >
             Store
@@ -32,10 +32,10 @@ const Navbar: React.FC = () => {
           >
             Channels
           </NavLink>
-          <button className="mt-[0.1rem] font-semibold font-sans  text-[1.07rem] ml-[0.47rem]">
+          <button className="flex items-center mt-[0.1rem] font-semibold font-sans  text-[1.07rem] ml-[0.47rem]">
             Categories
+          <MdArrowDropDown size={"19px"} color={"#8197A4"} className=" ml-[0.1rem] mb-[0.1rem]  mr-[0.47rem] "/>
           </button>
-          <MdArrowDropDown size={"19px"} color={"#8197A4"} className=" ml-[0.1rem] mb-[0.1rem] mr-[0.47rem] "/>
           <NavLink
             to={"/"}
             className={"font-[300] text-[1.05rem] ml-[0.6rem]"}
@@ -45,16 +45,18 @@ const Navbar: React.FC = () => {
       <button className="text-white font-[350] text-[1.05rem] ml-[26.55rem] w-[7.7rem] h-[36px] rounded-[0.15rem] bg-[#0F79AF]">
         Try for free
       </button>
-      <AiOutlineSearch color={"#BBBEC1"} size={"26px"} className={"ml-5"}/>
-      <div className="flex items-end ml-[1.18rem]">
+      <button className="ml-5">
+      <AiOutlineSearch color={"#BBBEC1"} size={"26px"} />
+      </button>
+      <button className="flex items-end ml-[1.18rem]">
       <IoIosGlobe color={"#CCCCCC"} size={"24px"}/>
       <h1 className="ml-[0.3rem]  font-[600] text-[15.3px] text-[#CCCCCC] ">EN</h1>
           <MdArrowDropDown size={"19px"} color={"#8197A4"} className=" ml-[0.1rem] mb-[0.1rem] mr-[0.47rem] "/>
-      </div>
-      <div className="flex items-end ml-3">
+      </button>
+      <button className="flex items-end ml-3">
       <IoPersonOutline color={"#BBBEC1"} size={"24px"}/>
           <MdArrowDropDown size={"19px"} color={"#8197A4"} className=" ml-[0.1rem] mb-[0.1rem] mr-[0.47rem] "/>
-      </div>
+      </button>
     </div>
   );
 };
