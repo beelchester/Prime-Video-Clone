@@ -42,9 +42,13 @@ const Navbar: React.FC = () => {
           >
             My Stuff
           </NavLink>
-      <button className="text-white font-[350] text-[1.05rem] ml-[26.55rem] w-[7.7rem] h-[36px] rounded-[0.15rem] bg-[#0F79AF]">
+          <NavLink
+          to={"/signin"}
+          className="ml-[26.55rem]">
+      <button className="text-white font-[350] text-[1.05rem]  w-[7.7rem] h-[36px] rounded-[0.15rem] bg-[#0F79AF]">
         Try for free
       </button>
+          </NavLink>
       <button className="ml-5">
       <AiOutlineSearch color={"#BBBEC1"} size={"26px"} />
       </button>
