@@ -1,0 +1,19 @@
+.card-slider .slick-arrow.slick-prev{
+
+background-image: url("../../assets/images/Arrows/icons8-less-than-30.png");
+background: cover;
+background-position: center;
+background-repeat: no-repeat;
+}
+.card-slider .slick-arrow.slick-next{
+
+background-image: url("../../assets/images/Arrows/icons8-more-than-30.png");
+background: cover;
+background-position: center;
+background-repeat: no-repeat;
+}
+
+.slick-prev::before,
+.slick-next::before{
+display: none;
+}

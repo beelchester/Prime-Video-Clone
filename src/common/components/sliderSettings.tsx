@@ -1,8 +1,10 @@
+import {IoIosArrowBack} from 'react-icons/io'
+import"./slider.css"
 function SampleNextArrow(props:any) {
       const { className, style, onClick } = props;
       return (
             <div
-          className={`${className} hover:bg-[#0000006b] h-[11rem] mt-1 w-[4rem] absolute right-[0px] z-20 pt-[4.8rem] pl-[1.3rem]`}
+          className={`${className} hover:bg-[#00000079] bg-[#00000042] h-[173.8px] mt-[3.4px] w-[4rem] absolute right-[0px] z-20 `}
           style={{ ...style}}
           onClick={onClick}
           
@@ -14,23 +16,25 @@ function SampleNextArrow(props:any) {
       const { className, style, onClick } = props;
       return (
         <div
-          className={`${className} hover:bg-[#0000006b] h-[11rem] mt-1 w-[4rem] absolute left-[0px] z-20 pt-[4.8rem] pl-[1.3rem]`}
+          className={`${className} hover:bg-[#00000079] bg-[#00000042] h-[173.8px] mt-[3.4px] w-[4rem] absolute left-[0px] z-20 `}
           style={{ ...style }}
           onClick={onClick} >
+            <IoIosArrowBack size={"50px"}/>
           </div>
       );
     }
 
 export const movieSliderSettings = {
       dots: false,
-      infinite: true,
       slidesToShow: 3,
-      slidesToScroll: 3,
-      speed: 500,
+      slidesToScroll: 5,
+      infinite: true,
+      speed: 300,
       lazyload: true,
       nextArrow: <SampleNextArrow />,
       prevArrow: <SamplePrevArrow />,
       centerMode : true,
       centerPadding: "205px",
+   
       
 }

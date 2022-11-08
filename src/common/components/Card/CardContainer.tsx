@@ -6,6 +6,7 @@ import Slider from "react-slick";
 import { movieSliderSettings } from "../sliderSettings";
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
+import"../slider.css"
 
 const CardContainer = ({type, list, text=""}) => {
 
@@ -22,11 +23,13 @@ const CardContainer = ({type, list, text=""}) => {
   {list?.map( movie  => movie?.backdrop_path!==null&& movie?.adult===false&& <Card bg={movie?.backdrop_path}/>)}
 </div> */}
 {/* ml-[3.1rem] */}
-<div className=" max-w-full relative" >
+<div className="card-slider">
+<div className=" max-w-full relative " >
   <Slider {...movieSliderSettings} className=" ">
 
   {list?.map( movie  => movie?.backdrop_path!==null&& movie?.adult===false&& <Card bg={movie?.backdrop_path}/>)}
   </Slider> 
+</div>
    </div>
   
     </>
