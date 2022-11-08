@@ -2,8 +2,11 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import instance from "../../API/axios"
 import requests from "../../API/request"
+import Banner from "../../common/components/Banner/Banner"
 import CardContainer from "../../common/components/Card/CardContainer"
 import Navbar from "../../common/components/Navbar/Navbar"
+import { storeBanners } from "../../common/storeBanners"
+
 const Store = () => {
 
   const [trendingList, setTrendingList] = useState([])
@@ -143,6 +146,7 @@ const Store = () => {
     <>
     <Navbar/>
     <div className='bg-[#0F171E] h-[180rem] pt-[4.5rem] '>
+    <Banner list={storeBanners}/>
     <CardContainer type="rent" list={trendingList} text="New release movies"/>
     <CardContainer type="rent" list={actionList} text="Action and adventure movies"/>
     {/* <CardContainer type="rent" list={romanceList} text="Romance movies"/> */}

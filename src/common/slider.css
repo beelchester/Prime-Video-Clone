@@ -1,0 +1,38 @@
+.card-slider .slick-arrow.slick-prev,.banner .slick-arrow.slick-prev{
+
+background-image: url("../assets/images/Arrows/icons8-less-than-30.png");
+background: cover;
+background-position: center;
+background-repeat: no-repeat;
+}
+.card-slider .slick-arrow.slick-next,.banner .slick-arrow.slick-next{
+
+background-image: url("../assets/images/Arrows/icons8-more-than-30.png");
+background: cover;
+background-position: center;
+background-repeat: no-repeat;
+}
+
+.slick-prev::before,
+.slick-next::before{
+display: none;
+}
+
+
+
+.slick-dots li{
+  max-width: 13px;
+  max-height: 13px;
+  bottom: 38px;
+  background:rgba(204, 204, 204, 0.527);
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.479); 
+}
+
+.slick-dots button::before{
+  display: none;
+}
+
+.slick-dots li.slick-active {
+  background: rgb(221, 221, 221);
+}
