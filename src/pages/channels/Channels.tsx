@@ -4,6 +4,7 @@ import requests from '../../API/request'
 import { channelBanners } from '../../common/channelBanners'
 import Banner from '../../common/components/Banner/Banner'
 import CardContainer from '../../common/components/Card/CardContainer'
+import Footer from '../../common/components/Footer/Footer'
 import Navbar from '../../common/components/Navbar/Navbar'
 
 const Channels = () => {
@@ -91,7 +92,7 @@ const Channels = () => {
   return (
     <>
     <Navbar/>
-    <div className='bg-[#0F171E] h-[180rem] pt-[4.5rem] '>
+    <div className='bg-[#0F171E]  pt-[4.5rem] '>
     <Banner list={channelBanners}/>
     <CardContainer type="channel" channel={0} list={discoveryList}/>
     <CardContainer type="channel" channel={1} list={erosList}/>
@@ -100,7 +101,7 @@ const Channels = () => {
     <CardContainer type="channel" channel={4} list={manoramaList}/>
     <CardContainer type="channel" channel={5} list={mubiList}/>
     <CardContainer type="channel" channel={6} list={shortstvList}/>
-  
+    <Footer/>
     </div>
     </>
   )

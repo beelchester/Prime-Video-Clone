@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import familyfriendly from "../../../assets/images/Home/familyfriendly.jpg";
 
 const FamilyFriendly = () => {
@@ -13,9 +14,11 @@ const FamilyFriendly = () => {
           secure, ad-free kids entertainment. Kids can enjoy popular TV shows
           like Peppa Pig, Powerpuff Girls, and Chhota Bheem.
         </h1>
+        <NavLink to={"/signin"}>
         <button className="text-white font-ptSans font-[500] text-[18.2px] h-[3.4rem] mt-[53px] w-[17.5rem]  rounded-[0.15rem] bg-[#0F79AF]">
           Get started
         </button>
+        </NavLink>
       </div>
     </div>
   );

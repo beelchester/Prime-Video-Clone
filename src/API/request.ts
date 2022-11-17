@@ -12,6 +12,7 @@ const requests = {
   fetchSF : `/discover/movie?api_key=${API_KEY}&with_genres=878`,
   fetchDrama : `/discover/movie?api_key=${API_KEY}&with_genres=18`,
   fetchAnimation : `/discover/movie?api_key=${API_KEY}&with_genres=16`,
+  
   fetchDiscovery : `/discover/tv?with_networks=4353&api_key=${API_KEY}&language=en-US`,
   fetchEros : `/discover/tv?with_networks=2716&api_key=${API_KEY}&language=en-US`,
   fetchHoichoi : `/discover/tv?with_networks=2139&api_key=${API_KEY}&language=en-US`,

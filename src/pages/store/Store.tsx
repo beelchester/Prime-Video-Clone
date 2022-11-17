@@ -4,6 +4,7 @@ import instance from "../../API/axios"
 import requests from "../../API/request"
 import Banner from "../../common/components/Banner/Banner"
 import CardContainer from "../../common/components/Card/CardContainer"
+import Footer from "../../common/components/Footer/Footer"
 import Navbar from "../../common/components/Navbar/Navbar"
 import { storeBanners } from "../../common/storeBanners"
 
@@ -145,7 +146,7 @@ const Store = () => {
   return (
     <>
     <Navbar/>
-    <div className='bg-[#0F171E] h-[180rem] pt-[4.5rem] '>
+    <div className='bg-[#0F171E]  pt-[4.5rem] '>
     <Banner list={storeBanners}/>
     <CardContainer type="rent" list={trendingList} text="New release movies"/>
     <CardContainer type="rent" list={actionList} text="Action and adventure movies"/>
@@ -158,6 +159,7 @@ const Store = () => {
     <CardContainer type="rent" list={horrorList} text="Horror movies"/>
     <CardContainer type="rent" list={animationList} text="Animated movies"/>
     <CardContainer type="rent" list={documentaryList} text="Documentary movies"/>
+    <Footer/>
     </div>
     </>
   )

@@ -37,7 +37,7 @@ const Navbar: React.FC = () => {
           <MdArrowDropDown size={"19px"} color={"#8197A4"} className=" ml-[0.1rem] mb-[0.1rem]  mr-[0.47rem] "/>
           </button>
           <NavLink
-            to={"/"}
+            to={"/signin"}
             className={"font-[300] text-[1.05rem] ml-[0.6rem]"}
           >
             My Stuff
