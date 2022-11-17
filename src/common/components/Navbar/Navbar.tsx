@@ -27,7 +27,7 @@ const Navbar: React.FC = () => {
             Store
           </NavLink>
           <NavLink
-            to={"/"}
+            to={"/channels"}
             className={"font-[300] text-[1.05rem] mx-[0.47rem]"}
           >
             Channels

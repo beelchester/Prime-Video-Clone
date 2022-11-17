@@ -8,15 +8,19 @@ import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 import"../../slider.css"
 
-const CardContainer = ({type, list, text=""}) => {
+import { channelLogos } from "../../channelBanners";
 
+const CardContainer = ({type, list, text="",channel}) => {
+
+ 
 
   
   return (
     <>
       <div className="font-sans  mt-[1.5rem] ml-[3rem] flex justify-start items-center  ">
         {type=="rent"&&<h1 className="text-lg">RENT</h1>}
-        {<h1 className="ml-[0.6rem] font-semibold text-[19px]">{text}</h1>}
+        {type=="channel"&&<img src={channelLogos[channel]} className="max-w-[170px]"/>}
+        {<h1 className="ml-[0.6rem] font-semibold text-[19px]">{type=="rent"?text:"Most popular"}</h1>}
         <h1 className="ml-[0.6rem] text-[0.82rem] text-[#74ccff]">See more</h1>
       </div>
 {/* <div className="grid grid-flow-col overflow-scroll ml-[3.1rem]" >
@@ -27,7 +31,7 @@ const CardContainer = ({type, list, text=""}) => {
 <div className=" max-w-full relative " >
   <Slider {...movieSliderSettings} >
 
-  {list?.map( movie  => movie?.backdrop_path!==null&& movie?.adult===false&& <Card bg={movie?.backdrop_path}/>)}
+  {list?.map( movie  => movie?.backdrop_path!==null&&  <Card bg={movie?.backdrop_path}/>)}
   </Slider> 
 </div>
    </div>
