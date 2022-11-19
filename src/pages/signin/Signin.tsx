@@ -1,4 +1,5 @@
 import React from "react";
+import { MdArrowDropDown } from "react-icons/md";
 import logo from "../../assets/logos/primevideoblack.png";
 import SigninFooter from "./components/SigninFooter";
 const Signin = () => {
@@ -62,9 +63,13 @@ const Signin = () => {
                   />
                   <p className="inline text-[0.8rem]">Keep me signed in. </p>
                 </label>
-                <p className="inline text-[0.8rem] text-[#0066C0] hover:text-[rgb(194,102,26)] hover:cursor-pointer hover:underline">
+                <div className="group inline cursor-pointer">
+                <p className="inline text-[0.8rem] text-[#0066C0] group-hover:text-[rgb(194,102,26)] group-hover:underline">
                   Details
                 </p>
+                <MdArrowDropDown size={"17px"} color={'#5a5a5a'} className=" ml-[0.1rem] mb-[0.15rem]   inline"/>
+                </div>
+                
               </div>
               <div className=" h-10 flex items-center mt-[16px]">
                 <div className="w-full h-[1px] bg-[#b6b6b685]"></div>
@@ -75,8 +80,7 @@ const Signin = () => {
                 </div>
                 <div className="w-full h-[1px] bg-[#b6b6b685]"></div>
               </div>
-              {/* bg-[#dfdfdf85] */}
-              {/* cecece */}
+              
               <button className=" w-full h-[31px] border-[#53535385] border-[1px] rounded-[3px] bg-grayGradient hover:bg-none hover:bg-gray-200">
                 <h1 className="text-[12.5px] ">Create your Amazon account</h1>
               </button>

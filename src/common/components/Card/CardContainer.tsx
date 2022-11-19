@@ -21,7 +21,7 @@ const CardContainer = ({type, list, text="",channel}) => {
         {type=="rent"&&<h1 className="text-lg">RENT</h1>}
         {type=="channel"&&<img src={channelLogos[channel]} className="max-w-[170px]"/>}
         {<h1 className="ml-[0.6rem] font-semibold text-[19px]">{type=="rent"?text:"Most popular"}</h1>}
-        <h1 className="ml-[0.6rem] text-[0.82rem] text-[#74ccff]">See more</h1>
+        <h1 className="ml-[0.6rem] text-[0.82rem] text-[#74ccff] hover:cursor-pointer hover:text-[#99d8fd] transition hover:ease-in">See more</h1>
       </div>
 {/* <div className="grid grid-flow-col overflow-scroll ml-[3.1rem]" >
   {list?.map( movie  => movie?.backdrop_path!==null&& movie?.adult===false&& <Card bg={movie?.backdrop_path}/>)}
