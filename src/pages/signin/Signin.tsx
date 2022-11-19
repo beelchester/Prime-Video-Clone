@@ -1,5 +1,6 @@
 import React from "react";
 import logo from "../../assets/logos/primevideoblack.png";
+import SigninFooter from "./components/SigninFooter";
 const Signin = () => {
   return (
     <div>
@@ -18,32 +19,72 @@ const Signin = () => {
               </h1>
               <input
                 type="text"
-                className="border-[0.1px] rounded-[0.13rem] border-[#808080af]  mt-[0.15rem] w-full h-[1.95rem]"
+                className="border-[0.1px] rounded-[0.13rem] border-[#808080af]  mt-[0.15rem] w-full h-[1.95rem]
+                focus:outline-none focus:border-[rgb(236,109,4)] focus:border-[1.5px] focus:shadow-inputField
+                "
               />
               <div className="mt-[0.85rem] ml-[0.12rem] flex justify-between">
-                <h1 className="font-bold tracking-[-0.5px] text-[0.8rem]">Password</h1>
-                <h1 className="tracking-[-0.1px] text-[0.8rem] text-[#0066C0]">Forgot your password?</h1>
+                <h1 className="font-bold tracking-[-0.5px] text-[0.8rem]">
+                  Password
+                </h1>
+                <h1 className="tracking-[-0.1px] text-[0.8rem] text-[#0066C0] hover:text-[rgb(194,102,26)] hover:cursor-pointer hover:underline">
+                  Forgot your password?
+                </h1>
               </div>
               <input
                 type="text"
-                className="border-[0.1px] rounded-[0.13rem] border-[#808080af]  mt-[0.15rem] w-full h-[1.95rem]"
+                className="border-[0.1px] rounded-[0.13rem] border-[#808080af]  mt-[0.15rem] w-full h-[1.95rem]
+                focus:outline-none focus:border-[rgb(236,109,4)] focus:border-[1.5px] focus:shadow-inputField
+                
+                "
               />
-              <button className="border-[0.1px] border-[#808080af] mt-[1.35rem] font-ptSans text-[0.85rem] w-full h-[1.95rem] bg-[gold]">Sign in</button>
+              <button className="border-[1px] border-[#30303085] rounded-[3px] mt-[1.35rem] font-ptSans text-[0.85rem] w-full h-[1.95rem] bg-yellowGradient1 hover:bg-yellowGradient2">
+                Sign in
+              </button>
 
               <div className="text-[0.75rem]  mt-[1.1rem] font-ptSans ">
-                <p className="inline tracking-[0.03em]">By continuing, you agree to the Amazon </p>
-                <p className="inline text-[#0066C0] tracking-[0.03em]"> Conditions of Use and Privacy Notice</p>
+                <p className="inline tracking-[0.03em]">
+                  By continuing, you agree to the Amazon{" "}
+                </p>
+                <p className="inline text-[#0066C0] tracking-[0.03em] hover:text-[rgb(194,102,26)] hover:cursor-pointer hover:underline">
+                  {" "}
+                  Conditions of Use and Privacy Notice
+                </p>
                 <p className="inline">.</p>
               </div>
               <div className="mt-[12.65px] ml-[0.3rem]">
-                <input type="checkbox" name="" id="" className="w-[13px] border-[#808080da] mr-[0.3rem]"/>
-                <p className="inline text-[0.8rem]">Keep me signed in.</p>
-                <p className="inline text-[0.8rem] text-[#0066C0]">  Details</p>
+                <label>
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                    className="w-[13px] border-[#808080da] mr-[0.3rem]"
+                  />
+                  <p className="inline text-[0.8rem]">Keep me signed in. </p>
+                </label>
+                <p className="inline text-[0.8rem] text-[#0066C0] hover:text-[rgb(194,102,26)] hover:cursor-pointer hover:underline">
+                  Details
+                </p>
               </div>
+              <div className=" h-10 flex items-center mt-[16px]">
+                <div className="w-full h-[1px] bg-[#b6b6b685]"></div>
+                <div className="w-full h-5 bg-[white] flex items-end justify-center mx-1">
+                  <h1 className="text-[11.5px] mb-[0.5px] text-[#464646da]">
+                    New to Amazon?
+                  </h1>
+                </div>
+                <div className="w-full h-[1px] bg-[#b6b6b685]"></div>
+              </div>
+              {/* bg-[#dfdfdf85] */}
+              {/* cecece */}
+              <button className=" w-full h-[31px] border-[#53535385] border-[1px] rounded-[3px] bg-grayGradient hover:bg-none hover:bg-gray-200">
+                <h1 className="text-[12.5px] ">Create your Amazon account</h1>
+              </button>
             </div>
           </div>
         </div>
       </div>
+      <SigninFooter />
     </div>
   );
 };

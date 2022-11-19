@@ -10,10 +10,12 @@ import {IoIosGlobe} from "react-icons/io"
 const Navbar: React.FC = () => {
   return (
     <div className="bg-[#1B242F] text-[#DDE0E3] h-[4.5rem] w-[100%] flex items-center fixed z-50">
+      <NavLink to={"/"}>
       <img
         src={LogoWhite}
         className={" w-[7.2rem] h-[39px] mb-[0.009px]  ml-[46.4px]"}
-      />
+        />
+        </NavLink>
           <NavLink
             to={"/"}
             className={"font-[300] text-[1.05rem] ml-[1.4rem] mr-[0.49rem]"}
