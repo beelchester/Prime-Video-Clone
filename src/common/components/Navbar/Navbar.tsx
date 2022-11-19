@@ -5,9 +5,18 @@ import {MdArrowDropDown} from "react-icons/md"
 import {AiOutlineSearch} from "react-icons/ai"
 import {IoPersonOutline} from "react-icons/io5"
 import {IoIosGlobe} from "react-icons/io"
+import { useState } from "react";
+import AccountDropDown from "./AccountDropDown";
 
 
 const Navbar: React.FC = () => {
+
+  const [accountDrop, setAccountDrop] = useState(false)
+
+  function accountDropHandler(){
+    setAccountDrop(prev=> !prev)
+  }
+
   return (
     <div className="bg-[#1B242F] text-[#DDE0E3] h-[4.5rem] w-[100%] flex items-center fixed z-50">
       <NavLink to={"/"}>
@@ -59,10 +68,11 @@ const Navbar: React.FC = () => {
       <h1 className="ml-[0.3rem]  font-[600] text-[15.3px] text-[#CCCCCC] ">EN</h1>
           <MdArrowDropDown size={"19px"} color={"#8197A4"} className=" ml-[0.1rem] mb-[0.1rem] mr-[0.47rem] "/>
       </button>
-      <button className="flex items-end ml-3">
+      {accountDrop&&<AccountDropDown accountDrop={accountDropHandler}/>}
+      <div onClick={accountDropHandler} className="flex items-end ml-3 hover:cursor-pointer">
       <IoPersonOutline color={"#BBBEC1"} size={"24px"}/>
           <MdArrowDropDown size={"19px"} color={"#8197A4"} className=" ml-[0.1rem] mb-[0.1rem] mr-[0.47rem] "/>
-      </button>
+      </div>
     </div>
   );
 };
