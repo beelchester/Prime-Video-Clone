@@ -18,7 +18,8 @@ module.exports = {
         'yellowGradient1':'linear-gradient(0deg, rgba(237,185,58,1) 0%, rgba(255,255,255,1) 180%);  ',
         'yellowGradient2':'linear-gradient(0deg, rgba(237,185,58,1) 23%, rgba(255,255,255,1) 180%);',
         'grayGradient':'linear-gradient(0deg, #e6e6e6, #f7f7f7 );',
-        
+        'categGradient':'radial-gradient(ellipse at left top,rgba(29,79,115,.2) 10%,#0f171e 80%),radial-gradient(ellipse at left bottom,rgba(29,79,115,.1) 20%,#0f171e 80%)',
+        'categBg': "url('./assets/images/NavBar/bg.png')",
       }
     },
   },

@@ -7,6 +7,7 @@ import { IoPersonOutline } from "react-icons/io5";
 import { IoIosGlobe } from "react-icons/io";
 import { useEffect, useState, useRef} from "react";
 import AccountDropDown from "./AccountDropDown";
+import CategDropDown from "./CategDropDown";
 
 const Navbar: React.FC = () => {
   const [accountDrop, setAccountDrop] = useState(false);
@@ -32,6 +33,20 @@ const Navbar: React.FC = () => {
     }
     document.body.addEventListener('click',searchFieldFHandler)
     return() => document.body.removeEventListener('click',searchFieldFHandler)
+  }, [])
+  
+  const [categFont, setCategFont] = useState(300)
+  const [categDrop, setCategDrop] = useState(false)
+
+  function categDropHandler() {
+    setCategFont(400)
+    setCategDrop(true)
+  }
+
+  useEffect(() => {
+    categDropHandler()
+  
+    
   }, [])
   
 
@@ -63,7 +78,7 @@ const Navbar: React.FC = () => {
       >
         Channels
       </NavLink>
-      <button className="flex items-center mt-[0.1rem] font-semibold font-sans  text-[1.07rem] ml-[0.47rem]">
+      <button className={`flex items-center mt-[0.1rem] font-[${categFont}]  font-sans  text-[1.05rem] ml-[0.47rem]`}>
         Categories
         <MdArrowDropDown
           size={"19px"}
@@ -71,6 +86,7 @@ const Navbar: React.FC = () => {
           className=" ml-[0.1rem] mb-[0.1rem]  mr-[0.47rem] "
         />
       </button>
+      {categDrop&&<CategDropDown/>}
       <NavLink
         to={"/signin"}
         className={"font-[300] text-[1.05rem] ml-[0.6rem]"}
