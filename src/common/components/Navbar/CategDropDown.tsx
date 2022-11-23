@@ -1,5 +1,5 @@
 
-const CategDropDown = () => {
+const CategDropDown: React.FC = () => {
   return (
     <div className='w-full h-[21.75rem] text-white bg-categGradient fixed top-[4.5rem] bg-[#0f171e] flex'>
 <div className='w-[50%] h-full pl-[8.45rem] pr-[3rem] pt-[1.5rem] '>

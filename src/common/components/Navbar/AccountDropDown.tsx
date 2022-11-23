@@ -1,7 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-const AccountDropDown = ({accountDrop}) => {
+interface props{
+  accountDrop:() => void
+}
+
+const AccountDropDown: React.FC<props> = ({accountDrop}) => {
 
   return (
     <>

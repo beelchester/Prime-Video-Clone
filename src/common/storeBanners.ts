@@ -8,4 +8,4 @@ import banner7 from "../assets/images/Store/banner7.webp"
 import banner8 from "../assets/images/Store/banner8.webp"
 
 
-export const  storeBanners = [banner1,banner2,banner3,banner4,banner5,banner6,banner7,banner8]
+export const  storeBanners:string[] = [banner1,banner2,banner3,banner4,banner5,banner6,banner7,banner8]

@@ -10,7 +10,14 @@ import"../../slider.css"
 
 import { channelLogos } from "../../channelBanners";
 
-const CardContainer = ({type, list, text="",channel}) => {
+interface props{
+  type: string
+  list: any[] 
+  text?: string
+  channel?:number
+}
+
+const CardContainer: React.FC<props> = ({type, list, text="",channel=-1}) => {
 
  
 

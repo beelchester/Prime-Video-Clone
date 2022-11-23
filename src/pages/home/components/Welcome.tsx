@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import banner1 from "../../../assets/images/Home/banner1.jpg";
 import banner2 from "../../../assets/images/Home/banner2.jpg";
-const Welcome = () => {
+const Welcome: React.FC = () => {
   return (
     <div className=" h-[976px] font-openSans ">
         <div className="h-[4.5rem]"></div>

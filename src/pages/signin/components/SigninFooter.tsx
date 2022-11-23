@@ -1,5 +1,5 @@
 
-const SigninFooter = () => {
+const SigninFooter: React.FC = () => {
   return (
     <div className="h-[4rem] mt-[24px] w-full   flex items-center flex-col">
        <div className="flex w-full justify-center text-[10.8px] text-[#106b99] pt-[1px]">

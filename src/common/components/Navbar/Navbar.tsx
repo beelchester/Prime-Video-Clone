@@ -10,7 +10,7 @@ import AccountDropDown from "./AccountDropDown";
 import CategDropDown from "./CategDropDown";
 
 const Navbar: React.FC = () => {
-  const [accountDrop, setAccountDrop] = useState(false);
+  const [accountDrop, setAccountDrop] = useState<boolean>(false);
   function accountDropHandler() {
     setAccountDrop((prev) => !prev);
   }
@@ -18,14 +18,14 @@ const Navbar: React.FC = () => {
     setAccountDrop(false);
   }
 
-  const [searchField, setSearchField] = useState(false);
+  const [searchField, setSearchField] = useState<boolean>(false);
   function searchFieldTHandler() {
     setSearchField(true);
   }
-  const searchRef = useRef()
-  const searchRef2 = useRef()
+  const searchRef = useRef<HTMLButtonElement>(null)
+  const searchRef2 = useRef<HTMLDivElement>(null)
   useEffect(() => {
-    function searchFieldFHandler(e) {
+    function searchFieldFHandler(e:Event) {
       if(e.composedPath()[1] !== searchRef.current && e.composedPath()[2] !== searchRef.current && e.composedPath()[1] !== searchRef2.current)
       setSearchField(false);
       console.log(e.composedPath()[1])
@@ -35,8 +35,8 @@ const Navbar: React.FC = () => {
     return() => document.body.removeEventListener('click',searchFieldFHandler)
   }, [])
   
-  const [categFont, setCategFont] = useState(300)
-  const [categDrop, setCategDrop] = useState(false)
+  const [categFont, setCategFont] = useState<number>(300)
+  const [categDrop, setCategDrop] = useState<boolean>(false)
 
   function categDropHandler() {
     setCategFont(400)

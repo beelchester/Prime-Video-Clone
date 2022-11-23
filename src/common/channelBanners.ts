@@ -15,6 +15,6 @@ import logo6 from "../assets/logos/Channels/logo6.png"
 import logo7 from "../assets/logos/Channels/logo7.png"
 
 
-export const  channelBanners = [banner1,banner2,banner3,banner4,banner5,banner6,banner7]
+export const  channelBanners:string[] = [banner1,banner2,banner3,banner4,banner5,banner6,banner7]
 
-export const  channelLogos = [logo1,logo2,logo3,logo4,logo5,logo6,logo7]
+export const  channelLogos:string[] = [logo1,logo2,logo3,logo4,logo5,logo6,logo7]

@@ -1,6 +1,27 @@
 const API_KEY = "4e44d9029b1270a757cddc766a1bcb63"
 
-const requests = {
+interface requests{
+  fetchTrending: string;
+  fetchAction: string;
+  fetchRomance: string;
+  fetchComedy: string;
+  fetchPopular: string;
+  fetchHorror: string;
+  fetchDocumentary: string;
+  fetchFamily: string;
+  fetchSF: string;
+  fetchDrama:string;
+  fetchAnimation : string;
+  fetchDiscovery : string;
+  fetchEros : string;
+  fetchHoichoi : string;
+  fetchLions : string;
+  fetchManorama : string;
+  fetchMubi : string;
+  fetchShortstv: string;
+}
+
+const requests:requests = {
   fetchTrending : `/trending/all/week?api_key=${API_KEY}&language=en-US`,
   fetchAction : `/discover/movie?api_key=${API_KEY}&with_genres=28`,
   fetchRomance : `/discover/movie?api_key=${API_KEY}&with_genres=10749`,

@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import familyfriendly from "../../../assets/images/Home/familyfriendly.jpg";
 
-const FamilyFriendly = () => {
+const FamilyFriendly: React.FC = () => {
   return (
     <div>
       <img src={familyfriendly} />

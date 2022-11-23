@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import firetv from "../../../assets/images/Home/firetv.jpg";
 
-const Firetv = () => {
+const Firetv: React.FC = () => {
   return (
     <div className="mt-[708px]  text-white" >
       <img src={firetv} className={""} />

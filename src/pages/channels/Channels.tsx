@@ -7,7 +7,7 @@ import CardContainer from '../../common/components/Card/CardContainer'
 import Footer from '../../common/components/Footer/Footer'
 import Navbar from '../../common/components/Navbar/Navbar'
 
-const Channels = () => {
+const Channels: React.FC = () => {
   const [discoveryList, setDiscoveryList] = useState([])
   useEffect(() => {
     async function fetchData(){

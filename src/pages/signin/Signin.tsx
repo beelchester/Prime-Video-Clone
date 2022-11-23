@@ -2,7 +2,7 @@ import React from "react";
 import { MdArrowDropDown } from "react-icons/md";
 import logo from "../../assets/logos/primevideoblack.png";
 import SigninFooter from "./components/SigninFooter";
-const Signin = () => {
+const Signin: React.FC = () => {
   return (
     <div>
       <div className="shadow text-black">

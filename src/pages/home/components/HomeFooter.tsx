@@ -1,6 +1,6 @@
 import footerlogo from "../../../assets/logos/primevideofooter.png";
 
-const HomeFooter = () => {
+const HomeFooter: React.FC= () => {
   return (
     <div className="w-full h-[135px] text-[0.87rem] flex flex-col items-center justify-center">
       <img src={footerlogo} />

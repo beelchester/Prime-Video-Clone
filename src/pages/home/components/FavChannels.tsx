@@ -8,7 +8,7 @@ import manorama from "../../../assets/images/Home/manorama.png";
 import mubi from "../../../assets/images/Home/mubi.png";
 import shorts from "../../../assets/images/Home/shorts.png";
 
-const FavChannels = () => {
+const FavChannels: React.FC = () => {
   return (
     <div className="absolute h-[537px] text-black w-full flex bg-[white] mt-[10.7rem]">
       <div className="h-full w-[50%] ">

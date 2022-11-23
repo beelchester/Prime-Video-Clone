@@ -5,7 +5,10 @@ import 'slick-carousel/slick/slick.css';
 import"../../slider.css"
 import { storeBanners } from "../../storeBanners";
 
-const Banner = ({list}) => {
+interface props {
+  list: string[]
+}
+const Banner: React.FC<props> = ({list}) => {
   console.log(list)
   return (
     <div className='h-[273px] w-full banner'>
