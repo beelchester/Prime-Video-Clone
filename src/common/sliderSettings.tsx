@@ -26,7 +26,7 @@ function MovieNextArrow(props:any) {
 
 function BannerNextArrow(props:any) {
       const { className, style, onClick,currentSlide, slideCount } = props;
-      console.log(slideCount)
+      // console.log(slideCount)
       return (
         <>
         {currentSlide!==slideCount-1 &&

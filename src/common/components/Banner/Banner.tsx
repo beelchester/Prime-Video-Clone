@@ -4,19 +4,21 @@ import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 import"../../slider.css"
 import { storeBanners } from "../../storeBanners";
+import ImageContainer from "./ImageContainer";
 
 interface props {
   list: string[]
 }
 const Banner: React.FC<props> = ({list}) => {
-  console.log(list)
+  // console.log(list)
+
+
+
   return (
     <div className='h-[273px] w-full banner'>
       <Slider {...bannerSliderSettings} >
-  {list?.map( image  => 
-<div  className=" h-[273px] w-full  "> 
-<img src={image} />
-</div>
+  {list?.map( image  =>  <ImageContainer key={list.indexOf(image)} image={image}/>
+
   )
       }
     </Slider> 

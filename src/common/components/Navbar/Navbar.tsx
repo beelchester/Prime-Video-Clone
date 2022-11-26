@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import LogoWhite from "../../../assets/logos/primevideowhite.png";
 
 import { MdArrowDropDown } from "react-icons/md";
@@ -14,9 +14,7 @@ const Navbar: React.FC = () => {
   function accountDropHandler() {
     setAccountDrop((prev) => !prev);
   }
-  function accountDropHandlerF() {
-    setAccountDrop(false);
-  }
+  
 
   const [searchField, setSearchField] = useState<boolean>(false);
   function searchFieldTHandler() {
@@ -24,36 +22,48 @@ const Navbar: React.FC = () => {
   }
   const searchRef = useRef<HTMLButtonElement>(null)
   const searchRef2 = useRef<HTMLDivElement>(null)
+  const accountRef = useRef<HTMLDivElement>(null)
   useEffect(() => {
-    function searchFieldFHandler(e:Event) {
+    function refHandler(e:Event) {
       if(e.composedPath()[1] !== searchRef.current && e.composedPath()[2] !== searchRef.current && e.composedPath()[1] !== searchRef2.current)
       setSearchField(false);
-      console.log(e.composedPath()[1])
-      console.log(searchRef.current)
+      if(e.composedPath()[1] !== accountRef.current && e.composedPath()[2] !== accountRef.current && e.composedPath()[0] !== accountRef.current)
+      setAccountDrop(false);
+
+      // console.log(e.composedPath())
+      // console.log(searchRef.current)
+      // console.log(accountRef.current)
     }
-    document.body.addEventListener('click',searchFieldFHandler)
-    return() => document.body.removeEventListener('click',searchFieldFHandler)
+    document.body.addEventListener('click',refHandler)
+    return() => document.body.removeEventListener('click',refHandler)
   }, [])
   
-  const [categFont, setCategFont] = useState<number>(300)
+  const [categColor, setCategColor] = useState<string>('#DDE0E3')
   const [categDrop, setCategDrop] = useState<boolean>(false)
+  const [fontWeight, setFontWeight] = useState<number>(500)
+  const location = useLocation()
 
-  function categDropHandler() {
-    setCategFont(400)
+  function categDropTHandler() {
+    setCategColor('FFFFFF')
     setCategDrop(true)
+    
+  }
+  function categDropFHandler() {
+    setCategColor('DDE0E3')
+    setCategDrop(false)
+
   }
 
-  useEffect(() => {
-    categDropHandler()
-  
-    
-  }, [])
-  
-
-  
+ useEffect(() => {
+  if(location.pathname==='/'){
+    setFontWeight(()=>300)
+  }
+ }, [])
+ 
 
   return (
-    <div  className="bg-[#1B242F] text-[#DDE0E3] h-[4.5rem] w-[100%] flex items-center fixed z-50">
+    <div  className={`bg-[#1B242F] font-[${fontWeight}]  ${location.pathname==='/'?'text-[1.05rem]':'text-[1.03rem]'}  text-[#DDE0E3] h-[4.5rem] w-[100%] flex items-center fixed z-50 justify-between`}>
+      <div className="flex items-center">
       <NavLink to={"/"}>
         <img
           src={LogoWhite}
@@ -62,39 +72,45 @@ const Navbar: React.FC = () => {
       </NavLink>
       <NavLink
         to={"/"}
-        className={"font-[300] text-[1.05rem] ml-[1.4rem] mr-[0.49rem]"}
+        className={"  ml-[1.4rem] mr-[0.49rem]"}
       >
         Home
       </NavLink>
       <NavLink
         to={"/store"}
-        className={"font-[300] text-[1.05rem] mx-[0.485rem]"}
+        className={` mx-[0.485rem] ${location.pathname==="/store"?'underline underline-offset-[5px] text-white font-[600]':""}`}
       >
         Store
       </NavLink>
       <NavLink
         to={"/channels"}
-        className={"font-[300] text-[1.05rem] mx-[0.47rem]"}
+        className={`  mx-[0.47rem] ${location.pathname==="/channels"?'underline underline-offset-[5px] text-white font-[600]':""}`}
       >
         Channels
       </NavLink>
-      <button className={`flex items-center mt-[0.1rem] font-[${categFont}]  font-sans  text-[1.05rem] ml-[0.47rem]`}>
+      <button onMouseEnter={categDropTHandler} onMouseLeave={categDropFHandler} className={`  flex items-center mt-[0.1rem] text-[${'#'+categColor}]   ml-[0.47rem]`}>
+        <div className="h-[3rem] mt-[1.35rem] flex justify-start">
         Categories
+        </div>
         <MdArrowDropDown
           size={"19px"}
           color={"#8197A4"}
           className=" ml-[0.1rem] mb-[0.1rem]  mr-[0.47rem] "
         />
       </button>
-      {categDrop&&<CategDropDown/>}
+      {categDrop&&<CategDropDown categDropT={categDropTHandler} categDropF={categDropFHandler}/>}
       <NavLink
         to={"/signin"}
-        className={"font-[300] text-[1.05rem] ml-[0.6rem]"}
+        className={"  ml-[0.6rem]"}
       >
         My Stuff
       </NavLink>
-      <NavLink to={"/signin"} className="ml-[26.55rem]">
-        <button className="text-white font-[350] text-[1.05rem]  w-[7.7rem] h-[36px] rounded-[0.15rem] bg-[#0F79AF]">
+      </div>
+
+      <div className="flex items-center mr-[2.75rem]">
+
+      <NavLink to={"/signin"} >
+        <button className={`text-white font-[${fontWeight===500?400:350}]  w-[${fontWeight===500?400:350}]   ${fontWeight===500?'w-[7.9rem]':'w-[7.7rem]'} h-[36px] rounded-[0.15rem] bg-[#0F79AF]`}>
           Try for free
         </button>
       </NavLink>
@@ -108,19 +124,20 @@ const Navbar: React.FC = () => {
       <button ref={searchRef} className="ml-5" onClick={searchFieldTHandler} >
         <AiOutlineSearch color={"#BBBEC1"} size={"26px"} />
       </button>
-      <button className="flex items-end ml-[1.18rem]">
-        <IoIosGlobe color={"#CCCCCC"} size={"24px"} />
-        <h1 className="ml-[0.3rem]  font-[600] text-[15.3px] text-[#CCCCCC] ">
+      <button className="flex  ml-[1.18rem]">
+        <IoIosGlobe color={"#CCCCCC"} className="mt-[0.3rem]" size={"24px"} />
+        <h1 className="ml-[0.3rem] mt-[0.5rem] font-[500] text-[15.3px] text-[#CCCCCC] ">
           EN
         </h1>
         <MdArrowDropDown
           size={"19px"}
           color={"#8197A4"}
-          className=" ml-[0.1rem] mb-[0.1rem] mr-[0.47rem] "
+          className=" ml-[0.25rem] mt-[0.55rem] mr-[0.22rem] "
         />
       </button>
-      {accountDrop && <AccountDropDown accountDrop={accountDropHandlerF} />}
+      {accountDrop && <AccountDropDown accountDrop={accountDropHandler} />}
       <div
+      ref={accountRef}
         onClick={accountDropHandler}
         className="flex items-end ml-3 hover:cursor-pointer"
       >
@@ -130,6 +147,8 @@ const Navbar: React.FC = () => {
           color={"#8197A4"}
           className=" ml-[0.1rem] mb-[0.1rem] mr-[0.47rem] "
         />
+      </div>
+
       </div>
     </div>
   );

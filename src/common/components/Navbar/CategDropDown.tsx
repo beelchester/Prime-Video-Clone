@@ -1,7 +1,13 @@
+interface props{
+  categDropT: () => void
+  categDropF: () => void
+}
 
-const CategDropDown: React.FC = () => {
+const CategDropDown: React.FC<props> = ({categDropT, categDropF}) => {
+
+
   return (
-    <div className='w-full h-[21.75rem] text-white bg-categGradient fixed top-[4.5rem] bg-[#0f171e] flex'>
+    <div onMouseEnter={categDropT} onMouseLeave={categDropF} className='w-full h-[21.75rem] text-white bg-categGradient fixed top-[4.5rem] bg-[#0f171e] flex'>
 <div className='w-[50%] h-full pl-[8.45rem] pr-[3rem] pt-[1.5rem] '>
     <h1 className='font-semibold font-ptSans text-[18.5px]'>Top categories</h1>
     <div className='w-full h-[70%] mt-3 grid grid-column-2 grid-rows-2 grid-flow-col gap-x-[10px] '>

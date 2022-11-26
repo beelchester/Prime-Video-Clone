@@ -38,7 +38,7 @@ const CardContainer: React.FC<props> = ({type, list, text="",channel=-1}) => {
 <div className=" max-w-full relative " >
   <Slider {...movieSliderSettings} >
 
-  {list?.map( movie  => movie?.backdrop_path!==null&&  <Card bg={movie?.backdrop_path}/>)}
+  {list?.map( movie  => movie?.backdrop_path!==null&&  <Card key={movie.id} bg={movie?.backdrop_path}/>)}
   </Slider> 
 </div>
    </div>
