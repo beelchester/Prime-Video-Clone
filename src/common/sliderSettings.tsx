@@ -31,7 +31,7 @@ function BannerNextArrow(props:any) {
         <>
         {currentSlide!==slideCount-1 &&
             <div
-          className={`${className} hover:bg-[#00000079] bg-[#00000042] h-[273px] mt-[-4px] w-[3rem] absolute right-[0px] z-20 `}
+          className={`${className} hover:bg-[#00000079] bg-[#00000042] h-[280px] mt-[-4px] w-[3rem] absolute right-[0px] z-20 `}
           style={{ ...style}}
           onClick={onClick}
           ></div>}
@@ -44,7 +44,7 @@ function BannerNextArrow(props:any) {
       return (
         <>{currentSlide!==0&&
         <div
-          className={`${className} hover:bg-[#00000079] bg-[#00000042] h-[273px] mt-[-4px] w-[3rem] absolute left-[0px] z-20 `}
+          className={`${className} hover:bg-[#00000079] bg-[#00000042] h-[280px] mt-[-4px] w-[3rem] absolute left-[0px] z-20 `}
           style={{ ...style }}
           onClick={onClick} >
             <IoIosArrowBack size={"50px"}/>

@@ -114,12 +114,12 @@ const Navbar: React.FC = () => {
           Try for free
         </button>
       </NavLink>
-      {searchField && (
-        <div ref={searchRef2}  id="search" className=" transition ease-in-out pl-1 flex items-center w-[15.5rem] rounded-[3px] border-[#ccccccbb] bg-[#1B242F] border-[1px] h-[40px] fixed top-[1rem] left-[57.4rem]">
+      
+        <div ref={searchRef2}  id="search" className={` ${searchField?'flex':'hidden'}  pl-1 items-center w-[15.5rem] rounded-[3px] border-[#ccccccbb] bg-[#1B242F] border-[1px] h-[40px] fixed top-[1rem] left-[57.4rem]`}>
         <AiOutlineSearch color={"white"} size={"26px"} />
         <input type="text" placeholder="Search" className="ml-1 placeholder:text-[#cccccc52] focus:outline-none text-white bg-[#1B242F]"/>
         </div>
-      )}
+     
       {/* <div onClick={searchFieldTHandler} className="w-[26px] h-[26px] bg-black fixed left-[71rem]"></div> */}
       <button ref={searchRef} className="ml-5" onClick={searchFieldTHandler} >
         <AiOutlineSearch color={"#BBBEC1"} size={"26px"} />

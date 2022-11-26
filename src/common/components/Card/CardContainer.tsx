@@ -23,7 +23,7 @@ const CardContainer: React.FC<props> = ({type, list, text="",channel=-1}) => {
 
   
   return (
-    <>
+    <div >
       <div className="font-sans  mt-[1.5rem] ml-[3rem] flex justify-start items-center  ">
         {type=="rent"&&<h1 className="text-lg">RENT</h1>}
         {type=="channel"&&<img src={channelLogos[channel]} className="max-w-[170px]"/>}
@@ -34,16 +34,16 @@ const CardContainer: React.FC<props> = ({type, list, text="",channel=-1}) => {
   {list?.map( movie  => movie?.backdrop_path!==null&& movie?.adult===false&& <Card bg={movie?.backdrop_path}/>)}
 </div> */}
 {/* ml-[3.1rem] */}
-<div className="card-slider">
-<div className=" max-w-full relative " >
+<div className="card-slider ">
+<div className=" max-w-full " >
   <Slider {...movieSliderSettings} >
 
-  {list?.map( movie  => movie?.backdrop_path!==null&&  <Card key={movie.id} bg={movie?.backdrop_path}/>)}
+  {list?.map( movie  => movie?.backdrop_path!==null&&  <Card key={movie.id} movie={movie}/>)}
   </Slider> 
 </div>
    </div>
   
-    </>
+    </div>
   );
 };
 
