@@ -40,7 +40,7 @@ const requests:requests = {
   fetchLions : `/discover/tv?with_networks=16&api_key=${API_KEY}&language=en-US`,
   fetchManorama : `/discover/tv?with_networks=49&api_key=${API_KEY}&language=en-US`,
   fetchMubi : `/discover/tv?with_networks=5484&api_key=${API_KEY}&language=en-US`,
-  fetchShortstv : `/discover/tv?with_networks=5511&api_key=${API_KEY}&language=en-US`,
+  fetchShortstv : `/discover/tv?with_networks=155&api_key=${API_KEY}&language=en-US`,
 }
 
 export default requests
