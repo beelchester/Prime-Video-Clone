@@ -10,8 +10,8 @@ const Signin: React.FC = () => {
         <div className="flex justify-center pt-[0.85rem]">
           <img src={logo} />
         </div>
-        <div className="flex justify-center items-center w-full h-[30.2rem]">
-          <div className=" flex justify-center items-center rounded-[4px] w-[21.9rem] h-[27.4rem] mb-[0.5rem] border-[0.1px] border-[#b9b9b97c]">
+        <div className="flex justify-center items-center w-full h-[36rem]">
+          <div className=" flex justify-center items-center rounded-[4px] w-[21.9rem] h-[35rem] mb-[0.5rem] border-[0.1px] border-[#b9b9b97c]">
             <div className=" w-[19.5rem] h-full ">
               <h1 className="font-ptSans  mt-[0.5rem] text-[1.8rem] ">
               Create account
@@ -102,12 +102,7 @@ const Signin: React.FC = () => {
                 </div>
                 <div className="w-full h-[1px] bg-[#b6b6b685]"></div>
               </div>
-              <NavLink to={"/signout"}>
-              <button className=" w-full h-[31px] border-[#53535385] border-[1px] rounded-[3px] bg-grayGradient hover:bg-none hover:bg-gray-200">
-                <h1 className="text-[12.5px] ">Create your Amazon account</h1>
-              </button>
-              </NavLink>
-            </div>
+              </div>
           </div>
         </div>
       </div>

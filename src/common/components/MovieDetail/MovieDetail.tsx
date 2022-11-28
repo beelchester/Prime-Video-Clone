@@ -1,22 +1,27 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../../app/store'
 import Footer from '../Footer/Footer'
 import Navbar from '../Navbar/Navbar'
 
 const MovieDetail = () => {
+
+  const movie = useSelector((state:RootState)=> state.movie.value)
+  console.log(movie)
   return (
     <>
     <Navbar/>
     <div className='pt-[4.5rem] bg-[#0F171E] h-[100vh] relative cursor-default'>
       <div className='flex justify-end'>
     <div style={{
-        backgroundImage: `url("https://images-eu.ssl-images-amazon.com/images/S/pv-target-images/f9effd8ac3c55d3ea35ab970673ff1d0454543ec72f3703ce955a5d640f60cdb._V_SX1080_.jpg")`,
-      }} className='h-[538px]  bg-cover bg-no-repeat bg-center w-[59.7em] mb-[1.48rem]'>
+          backgroundImage: `url("https://image.tmdb.org/t/p/original/${movie?.backdrop_path}")`,
+        }} className='h-[538px]  bg-cover bg-no-repeat bg-center w-[59.7em] mb-[1.48rem]'>
         </div>
         </div>
         <div className='font-sans w-full h-[538px] flex flex-col text-white absolute top-[4.5rem]  bg-[#0000006b]   pl-[48px]'>
-        <h1 className='text-[36px] mt-[40px] mb-[7px]'>Special Operations: India</h1>
-        <h1 className='text-[#8197A4] mb-[15px]'>2021</h1>
-        <h1 className='text-[17.5px] leading-[1.38] w-[59%]'>Dramatic re-creations and first-hand accounts tell the story of some of the most amazing special operations in Indian military history.</h1>
+        <h1 className='text-[36px] mt-[40px] mb-[7px]'>{movie?.original_title||movie?.original_name}</h1>
+        <h1 className='text-[#8197A4] mb-[15px]'>{movie?.release_date?.slice(0,4)||movie?.first_air_date?.slice(0,4)}</h1>
+        <h1 className='text-[17.5px] leading-[1.38] w-[59%]'>{movie?.overview}</h1>
         <div className='flex items-center mt-[15px]'>
         <button className={`text-white font-[500] text-lg w-[13rem] h-[4.25rem] rounded-[0.15rem] bg-[#0F79AF] hover:bg-[#159ee2] `}>
           Watch Trailer
@@ -30,7 +35,7 @@ const MovieDetail = () => {
           </div>
           <div className='w-[13rem]  mt-[-5px] flex justify-between'>
             <h1 className='font-[600]'>Audio Languages</h1>
-            <h1>English</h1>
+            {movie?.original_language==="hi"?(<h1 className='mr-[15px]'>Hindi</h1>):<h1>English</h1>}
           </div>
         </div>
         <div className='font-ptSans mt-[4.05rem] text-[15.8px] flex justify-between '>
