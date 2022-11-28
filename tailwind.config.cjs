@@ -13,6 +13,7 @@ module.exports = {
         'banner': '180px 30px 140px 0px ;',
         'favChannel': '0px 0px 10px 2px ;',
         'inputField': '0 0 6px rgb(236,109,4)',
+        'detail':'inset 0 0 20px rgb(236,109,4)',
       },
       backgroundImage:{
         'yellowGradient1':'linear-gradient(0deg, rgba(237,185,58,1) 0%, rgba(255,255,255,1) 180%);  ',

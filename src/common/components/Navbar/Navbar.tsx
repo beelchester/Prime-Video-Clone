@@ -38,18 +38,18 @@ const Navbar: React.FC = () => {
     return() => document.body.removeEventListener('click',refHandler)
   }, [])
   
-  const [categColor, setCategColor] = useState<string>('#DDE0E3')
+  const [categColor, setCategColor] = useState<string>('text-[#DDE0E3]')
   const [categDrop, setCategDrop] = useState<boolean>(false)
   const [fontWeight, setFontWeight] = useState<number>(500)
   const location = useLocation()
 
   function categDropTHandler() {
-    setCategColor('FFFFFF')
+    setCategColor('text-[white]')
     setCategDrop(true)
     
   }
   function categDropFHandler() {
-    setCategColor('DDE0E3')
+    setCategColor('text-[#DDE0E3]')
     setCategDrop(false)
 
   }
@@ -88,7 +88,7 @@ const Navbar: React.FC = () => {
       >
         Channels
       </NavLink>
-      <button onMouseEnter={categDropTHandler} onMouseLeave={categDropFHandler} className={`  flex items-center mt-[0.1rem] text-[${'#'+categColor}]   ml-[0.47rem]`}>
+      <button onMouseEnter={categDropTHandler} onMouseLeave={categDropFHandler} className={`  flex items-center mt-[0.1rem] ${categColor}   ml-[0.47rem]`}>
         <div className="h-[3rem] mt-[1.35rem] flex justify-start">
         Categories
         </div>
@@ -110,7 +110,7 @@ const Navbar: React.FC = () => {
       <div className="flex items-center mr-[2.75rem]">
 
       <NavLink to={"/signin"} >
-        <button className={`text-white font-[${fontWeight===500?400:350}]  w-[${fontWeight===500?400:350}]   ${fontWeight===500?'w-[7.9rem]':'w-[7.7rem]'} h-[36px] rounded-[0.15rem] bg-[#0F79AF]`}>
+        <button className={`text-white font-[${fontWeight===500?400:350}]  w-[${fontWeight===500?400:350}]   ${fontWeight===500?'w-[7.9rem]':'w-[7.7rem]'} h-[36px] rounded-[0.15rem] bg-[#0F79AF] hover:bg-[#159ee2] transition hover:ease-in-out`}>
           Try for free
         </button>
       </NavLink>

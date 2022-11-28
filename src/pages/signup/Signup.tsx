@@ -2,7 +2,7 @@ import React from "react";
 import { MdArrowDropDown } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 import logo from "../../assets/logos/primevideoblack.png";
-import SigninFooter from "./components/SigninFooter";
+import SigninFooter from "../signin/components/SigninFooter";
 const Signin: React.FC = () => {
   return (
     <div>
@@ -12,12 +12,12 @@ const Signin: React.FC = () => {
         </div>
         <div className="flex justify-center items-center w-full h-[30.2rem]">
           <div className=" flex justify-center items-center rounded-[4px] w-[21.9rem] h-[27.4rem] mb-[0.5rem] border-[0.1px] border-[#b9b9b97c]">
-            <div className="p-0 w-[18.5rem] h-full ">
-              <h1 className="font-ptSans  mt-[0.95rem] text-[1.8rem] ">
-                Sign in
+            <div className=" w-[19.5rem] h-full ">
+              <h1 className="font-ptSans  mt-[0.5rem] text-[1.8rem] ">
+              Create account
               </h1>
               <h1 className="mt-[0.55rem] ml-[0.12rem] font-bold tracking-[-0.02em] text-[0.8rem]">
-                Email or mobile phone number{" "}
+                Your name{" "}
               </h1>
               <input
                 type="text"
@@ -27,10 +27,31 @@ const Signin: React.FC = () => {
               />
               <div className="mt-[0.85rem] ml-[0.12rem] flex justify-between">
                 <h1 className="font-bold tracking-[-0.5px] text-[0.8rem]">
+                  Email
+                </h1>
+              </div>
+              <input
+                type="text"
+                className="border-[0.1px] rounded-[0.13rem] border-[#808080af]  mt-[0.15rem] w-full h-[1.95rem]
+                focus:outline-none focus:border-[rgb(236,109,4)] focus:border-[1.5px] focus:shadow-inputField
+                
+                "
+              />
+              <div className="mt-[0.85rem] ml-[0.12rem] flex justify-between">
+                <h1 className="font-bold tracking-[-0.5px] text-[0.8rem]">
                   Password
                 </h1>
-                <h1 className="tracking-[-0.1px] text-[0.8rem] text-[#0066C0] hover:text-[rgb(194,102,26)] hover:cursor-pointer hover:underline">
-                  Forgot your password?
+              </div>
+              <input
+                type="text"
+                className="border-[0.1px] rounded-[0.13rem] border-[#808080af]  mt-[0.15rem] w-full h-[1.95rem]
+                focus:outline-none focus:border-[rgb(236,109,4)] focus:border-[1.5px] focus:shadow-inputField
+                
+                "
+              />
+              <div className="mt-[0.85rem] ml-[0.12rem] flex justify-between">
+                <h1 className="font-bold tracking-[-0.5px] text-[0.8rem]">
+                  Re-enter Password
                 </h1>
               </div>
               <input
@@ -81,7 +102,7 @@ const Signin: React.FC = () => {
                 </div>
                 <div className="w-full h-[1px] bg-[#b6b6b685]"></div>
               </div>
-              <NavLink to={"/signup"}>
+              <NavLink to={"/signout"}>
               <button className=" w-full h-[31px] border-[#53535385] border-[1px] rounded-[3px] bg-grayGradient hover:bg-none hover:bg-gray-200">
                 <h1 className="text-[12.5px] ">Create your Amazon account</h1>
               </button>
