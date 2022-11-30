@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { MdArrowDropDown } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 import logo from "../../assets/logos/primevideoblack.png";
 import SigninFooter from "./components/SigninFooter";
 const Signin: React.FC = () => {
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  let userDetails
+  function signUpHandler(){
+    userDetails = {
+      email,password
+    }
+    console.log(userDetails)
+  }
+
   return (
     <div>
       <div className="shadow text-black">
@@ -21,8 +31,10 @@ const Signin: React.FC = () => {
               </h1>
               <input
                 type="text"
+                value={email}
+                onChange={(e)=>setEmail(e.target.value)}
                 className="border-[0.1px] rounded-[0.13rem] border-[#808080af]  mt-[0.15rem] w-full h-[1.95rem]
-                focus:outline-none focus:border-[rgb(236,109,4)] focus:border-[1.5px] focus:shadow-inputField
+                focus:outline-none focus:border-[rgb(236,109,4)] focus:border-[1.5px] focus:shadow-inputField text-[0.8rem] pl-[6px]
                 "
               />
               <div className="mt-[0.85rem] ml-[0.12rem] flex justify-between">
@@ -35,12 +47,14 @@ const Signin: React.FC = () => {
               </div>
               <input
                 type="text"
+                value={password}
+                onChange={(e)=>setPassword(e.target.value)}
                 className="border-[0.1px] rounded-[0.13rem] border-[#808080af]  mt-[0.15rem] w-full h-[1.95rem]
-                focus:outline-none focus:border-[rgb(236,109,4)] focus:border-[1.5px] focus:shadow-inputField
+                focus:outline-none focus:border-[rgb(236,109,4)] focus:border-[1.5px] focus:shadow-inputField text-[0.8rem] pl-[6px]
                 
                 "
               />
-              <button className="border-[1px] border-[#30303085] rounded-[3px] mt-[1.35rem] font-ptSans text-[0.85rem] w-full h-[1.95rem] bg-yellowGradient1 hover:bg-yellowGradient2">
+              <button onClick={signUpHandler} className="border-[1px] border-[#30303085] rounded-[3px] mt-[1.35rem] font-ptSans text-[0.85rem] w-full h-[1.95rem] bg-yellowGradient1 hover:bg-yellowGradient2">
                 Sign in
               </button>
 

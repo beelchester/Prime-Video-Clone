@@ -1,7 +1,14 @@
 import {createSlice, PayloadAction}  from "@reduxjs/toolkit"
 
 interface MovieState{
-  value: {backdrop_path?:string}
+  value: {backdrop_path?:string,
+  original_title?:string,
+  original_name?:string,  
+  overview?:string,
+  original_language?:string,
+  release_date?:string,
+  first_air_date?:string,
+  }
 }
 
 const initialState:MovieState = {
