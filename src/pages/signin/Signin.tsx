@@ -30,7 +30,7 @@ const Signin: React.FC = () => {
                 Email or mobile phone number{" "}
               </h1>
               <input
-                type="text"
+                type="email"
                 value={email}
                 onChange={(e)=>setEmail(e.target.value)}
                 className="border-[0.1px] rounded-[0.13rem] border-[#808080af]  mt-[0.15rem] w-full h-[1.95rem]
@@ -46,7 +46,7 @@ const Signin: React.FC = () => {
                 </h1>
               </div>
               <input
-                type="text"
+                type="password"
                 value={password}
                 onChange={(e)=>setPassword(e.target.value)}
                 className="border-[0.1px] rounded-[0.13rem] border-[#808080af]  mt-[0.15rem] w-full h-[1.95rem]

@@ -1,5 +1,6 @@
 import React, { useState , useEffect} from "react";
 import {  IoMdArrowDropright } from "react-icons/io";
+import {  TfiAlert } from "react-icons/tfi";
 import { NavLink } from "react-router-dom";
 import logo from "../../assets/logos/primevideoblack.png";
 import SigninFooter from "../signin/components/SigninFooter";
@@ -9,22 +10,63 @@ const Signin: React.FC = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [rePassword, setRePassword] = useState("")
+
+  const [validEmail, setValidEmail] = useState(true)
+  const [validPass, setValidPass] = useState(true)
+  const [validPassMatch, setValidPassMatch] = useState(true)
   let userDetails
   function signUpHandler(){
-    userDetails = {
-      name,email,password,rePassword
+    
+    let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if ( re.test(email) ) {
+        userDetails = {
+          name,email,password,rePassword
+        }
+        console.log(userDetails)
+        setValidEmail(true)
     }
-    console.log(userDetails)
+
+    else {
+        setValidEmail(false)
+        // setValidPass(false)
+        // setValidPassMatch(false)
+      }
+      
+      if(password.length>=6){
+      setValidPass(true)
+      console.log("first")
+    }
+    else{
+      setValidPass(false)
+    }
+
+    if(password === rePassword){
+      setValidPassMatch(true)
+    }
+    else{
+      setValidPassMatch(false)
+    }
   }
 
   return (
     <div>
       <div className="shadow text-black">
-        <div className="flex justify-center pt-[1.1rem]">
+        <div className="flex justify-center pt-[0.85rem]">
           <img src={logo} />
         </div>
-        <div className="flex justify-center items-center w-full h-[35.5rem] mt-[-2px] ">
-          <div className=" flex justify-center items-center rounded-[4px] w-[21.9rem] h-[32.45rem] mb-[0.5rem]  border-[0.1px] border-[#b9b9b97c]">
+        <div className="flex justify-center items-center flex-col w-full min-h-[35.5rem] mt-[-2px] ">
+        {!validEmail||!validPass||!validPassMatch? <div className="min-h-[4.65rem] w-[21.9rem] flex mt-5 mb-[14px] border border-[#c40000] rounded pb-[0.95rem]">
+            <TfiAlert color="#c40000" size={'30px'} className="mt-[9px] ml-[18px]"/>
+             <div className="ml-4">
+              <h1 className="text-[#c40000] font-sans mt-[12px] text-[17px] font-[500]">There was a problem</h1>
+              <ul>
+              {!validEmail&&<li className="text-[12px] font-[500] mt-[2.5px]">Enter a valid email address</li>}
+              {!validPass&&<li className="text-[12px] font-[500] ">Password must be at least 6 characters</li>}
+              {!validPassMatch&&<li className="text-[12px] font-[500] ">Passwords must match</li>}
+              </ul>
+            </div>
+          </div>:''}
+          <div className= {`flex justify-center items-center rounded-[4px] w-[21.9rem] h-[32.45rem]  ${!validEmail||!validPass||!validPassMatch?'mb-[1.5rem]':'mb-[0.5rem]'} border-[0.1px] border-[#b9b9b97c]`}>
             <div className=" w-[19.5rem] h-full ">
               <h1 className="font-ptSans  mt-[0.5rem] text-[1.8rem] ">
               Create account
