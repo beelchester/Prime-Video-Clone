@@ -1,4 +1,4 @@
-const API_KEY = "4e44d9029b1270a757cddc766a1bcb63"
+export const API_KEY = "4e44d9029b1270a757cddc766a1bcb63"
 
 interface requests{
   fetchTrending: string;
@@ -20,7 +20,7 @@ interface requests{
   fetchMubi : string;
   fetchShortstv: string;
 }
-
+let id
 const requests:requests = {
   fetchTrending : `/trending/all/week?api_key=${API_KEY}&language=en-US`,
   fetchAction : `/discover/movie?api_key=${API_KEY}&with_genres=28`,
@@ -41,6 +41,7 @@ const requests:requests = {
   fetchManorama : `/discover/tv?with_networks=49&api_key=${API_KEY}&language=en-US`,
   fetchMubi : `/discover/tv?with_networks=5484&api_key=${API_KEY}&language=en-US`,
   fetchShortstv : `/discover/tv?with_networks=155&api_key=${API_KEY}&language=en-US`,
+  fetchMovie:  `/movie/${id}?api_key=${API_KEY}&append_to_response=videos`
 }
 
 export default requests

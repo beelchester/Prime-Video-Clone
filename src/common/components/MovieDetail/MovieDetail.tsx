@@ -1,14 +1,46 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../app/store";
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
+import {GrPlayFill} from "react-icons/gr"
+import Youtube from "react-youtube"
+import axios from "axios";
+import instance from "../../../API/axios";
+import requests, { API_KEY } from "../../../API/request";
 
 const MovieDetail = () => {
   const movie = useSelector((state: RootState) => state.movie.value);
   console.log(movie);
+  const [youtube, setYoutube] = useState(false)
+
+  const opts = {
+    width: '1366px',
+    height:'500px'
+  }
+ const [trailer, setTrailer] = useState('')
+  async function fetchData(movie){
+    const request = await  instance.get(`/${movie.media_type.length !==0? movie.media_type : 'movie'}/${movie.id}?api_key=${API_KEY}&append_to_response=videos`)
+    
+      setTrailer( request.data.videos.results.find(vid => vid.name === 'Official Trailer'))
+    return request
+  }
+  useEffect(() => {
+    fetchData(movie)
+  }, [youtube])
   return (
     <>
+          {youtube&&<div onClick={()=>setYoutube(false)} className="flex items-center justify-center fixed z-[100] h-[99.9vh] top-0 right-0 w-full bg-[#00000096] backdrop-blur-lg">
+            <Youtube opts={opts} videoId={trailer.key}/>
+            </div>}
+
+     <style>
+              {`
+                svg path {
+                  stroke: white
+                }
+                `}
+            </style>
       <Navbar />
       <div className="pt-[4.5rem] bg-[#0F171E] h-[100vh] relative cursor-default">
         <div className="flex justify-end">
@@ -25,7 +57,7 @@ const MovieDetail = () => {
         <div className="font-sans w-[59.8rem] h-[8px] flex flex-col text-white absolute z-30 top-[38.05rem] left-[25.5rem]   backdrop-blur-[4px]   pl-[48px]"></div>
         <div className="font-sans w-[59.8rem] h-[3px] flex flex-col text-white absolute z-10 top-[38.1rem] left-[25.5rem] bg-[#00000042]   pl-[48px]"></div>
 
-        <div className="font-sans w-full h-[538px] flex flex-col text-white absolute z-50 top-[4.5rem]     pl-[48px]">
+        <div className="font-sans w-full h-[538px] flex flex-col text-white absolute z-40 top-[4.5rem]     pl-[48px]">
           <h1 className="text-[36px] mt-[40px] mb-[7px]">
             {movie?.original_title || movie?.original_name}
           </h1>
@@ -38,9 +70,13 @@ const MovieDetail = () => {
           </h1>
           <div className="flex items-center mt-[15px]">
             <button
-              className={`text-white font-[500] text-lg w-[13rem] h-[4.25rem] rounded-[0.15rem] bg-[#0F79AF] hover:bg-[#159ee2] `}
+            onClick={()=> setYoutube(true)}
+              className={`flex items-center justify-center text-white font-[500] text-lg w-[13rem] h-[4.25rem] rounded-[0.15rem] bg-[#0F79AF] hover:bg-[#159ee2] `}
             >
+              <GrPlayFill size={'28px'} className='mr-4' />
+              <h1>
               Watch Trailer
+              </h1>
             </button>
             <button className="h-11 w-11 bg-[#425265] ml-8 rounded-full flex items-center justify-center transition hover:ease-in-out hover:bg-[#536377]">
               <h1 className="text-[#ced3da] text-[2.7rem] font-[300] mb-[0.4rem]">
