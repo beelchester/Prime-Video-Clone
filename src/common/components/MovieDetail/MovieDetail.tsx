@@ -8,6 +8,7 @@ import Youtube from "react-youtube"
 import axios from "axios";
 import instance from "../../../API/axios";
 import requests, { API_KEY } from "../../../API/request";
+import { NavLink } from "react-router-dom";
 
 const MovieDetail = () => {
   const movie = useSelector((state: RootState) => state.movie.value);
@@ -16,22 +17,31 @@ const MovieDetail = () => {
 
   const opts = {
     width: '1366px',
-    height:'500px'
+    height:'500px',
+    playerVars: {
+      autoplay: 1,
+    },
   }
+
  const [trailer, setTrailer] = useState('')
   async function fetchData(movie){
-    const request = await  instance.get(`/${movie.media_type.length !==0? movie.media_type : 'movie'}/${movie.id}?api_key=${API_KEY}&append_to_response=videos`)
-    
-      setTrailer( request.data.videos.results.find(vid => vid.name === 'Official Trailer'))
-    return request
-  }
+    const request = await  instance.get(`/${movie.media_type? movie.media_type : 'movie'}/${movie.id}?api_key=${API_KEY}&append_to_response=videos`)
+    if(request.data.videos.results.find(vid => vid.type === 'Trailer').length===0){
+      console.log('error')
+    }
+    else
+      setTrailer( request.data.videos.results.find(vid => vid.type === 'Trailer'))
+      console.log(request,trailer)
+      return request
+    }
   useEffect(() => {
     fetchData(movie)
-  }, [youtube])
+  }, [])
   return (
     <>
-          {youtube&&<div onClick={()=>setYoutube(false)} className="flex items-center justify-center fixed z-[100] h-[99.9vh] top-0 right-0 w-full bg-[#00000096] backdrop-blur-lg">
-            <Youtube opts={opts} videoId={trailer.key}/>
+          {youtube&&
+          <div onClick={()=>setYoutube(false)} className="flex items-center justify-center fixed z-[100] h-[99.9vh] top-0 right-0 w-full bg-[#00000096] backdrop-blur-lg">
+            <Youtube opts={opts} videoId={trailer.key} />
             </div>}
 
      <style>
@@ -78,11 +88,13 @@ const MovieDetail = () => {
               Watch Trailer
               </h1>
             </button>
+            <NavLink to={'/signin'}>
             <button className="h-11 w-11 bg-[#425265] ml-8 rounded-full flex items-center justify-center transition hover:ease-in-out hover:bg-[#536377]">
               <h1 className="text-[#ced3da] text-[2.7rem] font-[300] mb-[0.4rem]">
                 +
               </h1>
             </button>
+            </NavLink>
           </div>
           <div className="h-[5rem] w-[20rem] mt-[0.8rem] text-[#91a7b4] font-ptSans text-[18px]">
             <div className="w-[15.23rem]   flex justify-between">
