@@ -1,11 +1,17 @@
-import React, { useState , useEffect} from "react";
+import React, { useState , useEffect, useRef} from "react";
 import {  IoMdArrowDropright } from "react-icons/io";
 import {  TfiAlert } from "react-icons/tfi";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../../assets/logos/primevideoblack.png";
 import SigninFooter from "../signin/components/SigninFooter";
+import { useDispatch, useSelector } from 'react-redux'
+import { addUser } from "../../features/addUserSlice"; 
+import { RootState } from "../../app/store";
+import {v4 as uuid} from "uuid"
 const Signin: React.FC = () => {
 
+  const dispatch = useDispatch()
+const navigate= useNavigate()
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -14,39 +20,50 @@ const Signin: React.FC = () => {
   const [validEmail, setValidEmail] = useState(true)
   const [validPass, setValidPass] = useState(true)
   const [validPassMatch, setValidPassMatch] = useState(true)
-  let userDetails
+
+let user  
   function signUpHandler(){
-    
     let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if ( re.test(email) ) {
-        userDetails = {
-          name,email,password,rePassword
-        }
-        console.log(userDetails)
+        
         setValidEmail(true)
     }
-
+  
     else {
         setValidEmail(false)
-        // setValidPass(false)
-        // setValidPassMatch(false)
+        return
       }
+      
       
       if(password.length>=6){
       setValidPass(true)
-      console.log("first")
     }
     else{
       setValidPass(false)
-    }
+      return
 
+    }
+  
     if(password === rePassword){
       setValidPassMatch(true)
     }
     else{
       setValidPassMatch(false)
+      return
     }
+      user = {id:uuid(),name,email,password}
+      console.log(user)
+      dispatch(addUser(user))
+      setName('')
+      setEmail('')
+      setPassword('')
+      setRePassword('')
+      alert("Successfully created the account")
+      navigate('/signin')
   }
+  const User = useSelector((state:RootState)=> state.addUser.value)
+  // User.map(e=>console.log(e.id))
+
 
   return (
     <div>
@@ -126,7 +143,7 @@ const Signin: React.FC = () => {
                 
                 "
               />
-              <button onClick={signUpHandler} className="border-[1px] border-[#30303085] rounded-[3px] mt-[1.35rem] font-ptSans text-[0.85rem] w-full h-[1.95rem] bg-yellowGradient1 hover:bg-yellowGradient2">
+              <button onClick={()=>signUpHandler()} className="border-[1px] border-[#30303085] rounded-[3px] mt-[1.35rem] font-ptSans text-[0.85rem] w-full h-[1.95rem] bg-yellowGradient1 hover:bg-yellowGradient2">
                 Create your Amazon account
               </button>
 
