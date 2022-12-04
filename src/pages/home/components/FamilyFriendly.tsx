@@ -1,7 +1,10 @@
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { RootState } from "../../../app/store";
 import familyfriendly from "../../../assets/images/Home/familyfriendly.jpg";
 
 const FamilyFriendly: React.FC = () => {
+  const signedInDisp = useSelector((state:RootState)=> state.signedIn.value)
   return (
     <div>
       <img src={familyfriendly} />
@@ -14,7 +17,7 @@ const FamilyFriendly: React.FC = () => {
           secure, ad-free kids entertainment. Kids can enjoy popular TV shows
           like Peppa Pig, Powerpuff Girls, and Chhota Bheem.
         </h1>
-        <NavLink to={"/signin"}>
+        <NavLink to={`${!signedInDisp?'/signin':'/store'}`}>
         <button className="text-white font-ptSans font-[500] text-[18.2px] h-[3.4rem] mt-[53px] w-[17.5rem]  rounded-[0.15rem] bg-[#0F79AF]">
           Get started
         </button>

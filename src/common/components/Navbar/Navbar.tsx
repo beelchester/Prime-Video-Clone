@@ -8,6 +8,8 @@ import { IoIosGlobe } from "react-icons/io";
 import { useEffect, useState, useRef } from "react";
 import AccountDropDown from "./AccountDropDown";
 import CategDropDown from "./CategDropDown";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../app/store";
 
 const Navbar: React.FC = () => {
   const [accountDrop, setAccountDrop] = useState<boolean>(false);
@@ -22,6 +24,11 @@ const Navbar: React.FC = () => {
   const searchRef = useRef<HTMLButtonElement>(null);
   const searchRef2 = useRef<HTMLDivElement>(null);
   const accountRef = useRef<HTMLDivElement>(null);
+
+  const current = useSelector((state:RootState)=> state.currentUser.value)
+  const signedInDisp = useSelector((state:RootState)=> state.signedIn.value)
+
+console.log(current,signedInDisp)
   useEffect(() => {
     function refHandler(e: Event) {
       if (
@@ -121,13 +128,17 @@ const Navbar: React.FC = () => {
             categDropF={categDropFHandler}
           />
         )}
-        <NavLink to={"/signin"} className={"  ml-[0.6rem]"}>
+        <NavLink to={`${!signedInDisp?'/signin':'/mystuff'}`} className={`ml-[0.6rem] ${
+            location.pathname === "/mystuff"
+              ? "underline underline-offset-[5px] text-white font-[600]"
+              : null
+          }`}>
           My Stuff
         </NavLink>
       </div>
 
       <div className="flex items-center mr-[2.75rem]">
-        <NavLink to={"/signin"}>
+        {!signedInDisp&&<NavLink to={"/signin"}>
           <button
             className={`text-white font-[${
               fontWeight === 500 ? 400 : 350
@@ -137,14 +148,14 @@ const Navbar: React.FC = () => {
           >
             Try for free
           </button>
-        </NavLink>
+        </NavLink>}
 
         <div
           ref={searchRef2}
           id="search"
           className={` ${
             searchField ? "flex" : "hidden"
-          }  pl-1 items-center w-[15.5rem] rounded-[3px] border-[#ccccccbb] bg-[#1B242F] border-[1px] h-[40px] fixed top-[1rem] left-[57.4rem]`}
+          }  pl-1 items-center w-[15.5rem] rounded-[3px] border-[#ccccccbb] bg-[#1B242F] border-[1px] h-[40px] fixed top-[1rem] ${!signedInDisp?'left-[57.4rem]':'left-[54rem]'}`}
         >
           <div style={{
               backgroundImage:
@@ -190,6 +201,7 @@ const Navbar: React.FC = () => {
             }}
             className="h-[24px] w-[24px] bg-center bg-no-repeat opacity-[0.7] group-hover:opacity-[1] "
           ></div>
+          {signedInDisp&& <h1 className="mx-2 font-[500]">{current.name}</h1>}
           <MdArrowDropDown
             size={"19px"}
             color={"#8197A4"}

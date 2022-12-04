@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../app/store";
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
@@ -9,12 +9,23 @@ import axios from "axios";
 import instance from "../../../API/axios";
 import requests, { API_KEY } from "../../../API/request";
 import { NavLink } from "react-router-dom";
+import { addwatchlist } from "../../../features/watchlistSlice";
 
 const MovieDetail = () => {
   const movie = useSelector((state: RootState) => state.movie.value);
   console.log(movie);
   const [youtube, setYoutube] = useState(false)
+  const dispatch = useDispatch()
 
+  let userWatchlist
+  const currentid = useSelector((state:RootState)=> state.currentUser.value.id)
+  const signedInDisp = useSelector((state:RootState)=> state.signedIn.value)
+
+  function watchlistHandler(){
+    userWatchlist={currentid,movie}
+    console.log(userWatchlist)
+    dispatch(addwatchlist(userWatchlist))
+  }
   const opts = {
     width: '1366px',
     height:'500px',
@@ -88,8 +99,8 @@ const MovieDetail = () => {
               Watch Trailer
               </h1>
             </button>
-            <NavLink to={'/signin'}>
-            <button className="h-11 w-11 bg-[#425265] ml-8 rounded-full flex items-center justify-center transition hover:ease-in-out hover:bg-[#536377]">
+            <NavLink to={`${!signedInDisp?'/signin':'/detail'}`}>
+            <button onClick={watchlistHandler} className="h-11 w-11 bg-[#425265] ml-8 rounded-full flex items-center justify-center transition hover:ease-in-out hover:bg-[#536377]">
               <h1 className="text-[#ced3da] text-[2.7rem] font-[300] mb-[0.4rem]">
                 +
               </h1>

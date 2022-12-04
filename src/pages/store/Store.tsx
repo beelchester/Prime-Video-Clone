@@ -1,12 +1,15 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
+import { useSelector } from "react-redux"
 import instance from "../../API/axios"
 import requests from "../../API/request"
+import { RootState } from "../../app/store"
 import Banner from "../../common/components/Banner/Banner"
 import CardContainer from "../../common/components/Card/CardContainer"
 import Footer from "../../common/components/Footer/Footer"
 import Navbar from "../../common/components/Navbar/Navbar"
 import { storeBanners } from "../../common/storeBanners"
+import {addwatchlist} from "../../features/watchlistSlice";
 
 const Store: React.FC = () => {
 
@@ -141,6 +144,8 @@ const Store: React.FC = () => {
     }
     fetchData()
   }, [])
+  const watchlist = useSelector((state:RootState)=> state.watchlist.value)
+  console.log(watchlist)
 
   
   return (

@@ -5,6 +5,7 @@ import Signin from "./pages/signin/Signin";
 import Channels from "./pages/channels/Channels";
 import MovieDetail from "./common/components/MovieDetail/MovieDetail";
 import Signup from "./pages/signup/Signup";
+import MyStuff from "./pages/mystuff/MyStuff";
 const App = () => {
 
   return (
@@ -17,6 +18,7 @@ const App = () => {
       <Route path="/signin" element={<Signin />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/detail" element={<MovieDetail />} />
+      <Route path="/mystuff" element={<MyStuff />} />
       </Routes>
 
     </div>

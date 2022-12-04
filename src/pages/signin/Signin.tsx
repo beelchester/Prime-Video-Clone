@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { MdArrowDropDown } from "react-icons/md";
 import { TfiAlert } from "react-icons/tfi";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { RootState } from "../../app/store";
 import logo from "../../assets/logos/primevideoblack.png";
 import {currentUser} from "../../features/currentUserSlice";
@@ -30,6 +30,7 @@ export default function Signin  ()  {
 //   dispatch(currentUser([]))
 //   dispatch(signedIn(false))
 // }, [])
+const navigate= useNavigate()
 
 
   function signUpHandler(){
@@ -65,6 +66,9 @@ export default function Signin  ()  {
     if(userDetail.email===e.email&&userDetail.password===e.password){
     dispatch(currentUser(e))
     dispatch(signedIn(true))
+    setEmail('')
+    setPassword('')
+    navigate('/store')
   }
     })
     
