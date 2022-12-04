@@ -26,10 +26,10 @@ export default function Signin  ()  {
   console.log(current)
   let userDetail
 
-useEffect(() => {
-  dispatch(currentUser({}))
-  dispatch(signedIn(false))
-}, [])
+// useEffect(() => {
+//   dispatch(currentUser([]))
+//   dispatch(signedIn(false))
+// }, [])
 
 
   function signUpHandler(){

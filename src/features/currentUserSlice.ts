@@ -1,5 +1,7 @@
 import {createSlice, PayloadAction}  from "@reduxjs/toolkit"
 
+const current = localStorage.getItem('currentUser') !== null? JSON.parse(localStorage.getItem('currentUser')):{}
+
 
 interface State{
   value:{id?:number,
@@ -11,7 +13,7 @@ interface State{
 
 
 const initialState:State = {
-  value:{}
+  value:current
 }
 
 export const currentUserSlice = createSlice({
@@ -20,6 +22,7 @@ initialState,
   reducers:{
     currentUser:(state,action:PayloadAction<any>) => {
       state.value = action.payload
+      localStorage.setItem('currentUser', JSON.stringify(state.value))
     },
   }
 })

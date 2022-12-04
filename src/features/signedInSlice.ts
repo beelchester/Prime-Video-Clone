@@ -1,12 +1,15 @@
 import {createSlice, PayloadAction}  from "@reduxjs/toolkit"
 
+const signInState = localStorage.getItem('signedIn') !== null? JSON.parse(localStorage.getItem('signedIn')):false
+
+
 interface State{
   value:boolean
 }
 
 
 const initialState:State = {
-  value:false
+  value:signInState
 }
 
 export const signedInSlice = createSlice({
@@ -15,6 +18,7 @@ initialState,
   reducers:{
     signedIn:(state,action) => {
       state.value = action.payload
+      localStorage.setItem('signedIn', JSON.stringify(state.value))
     },
   }
 })

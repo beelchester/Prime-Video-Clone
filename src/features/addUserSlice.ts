@@ -1,5 +1,7 @@
 import {createSlice, PayloadAction}  from "@reduxjs/toolkit"
 
+const users = localStorage.getItem('userList') !== null? JSON.parse(localStorage.getItem('userList')):[]
+
 interface Object{
     id?:number,
     name?:string,
@@ -13,7 +15,7 @@ interface State{
 
 
 const initialState:State = {
-  value:[]
+  value:users
 }
 
 export const addUserSlice = createSlice({
@@ -22,6 +24,7 @@ initialState,
   reducers:{
     addUser:(state,action) => {
       state.value.push(action.payload)
+      localStorage.setItem('userList', JSON.stringify(state.value.map(item=>item)))
     },
   }
 })
