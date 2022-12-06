@@ -13,7 +13,7 @@ import { addwatchlist } from "../../../features/watchlistSlice";
 
 const MovieDetail = () => {
   const movie = useSelector((state: RootState) => state.movie.value);
-  console.log(movie);
+  // console.log(movie);
   const [youtube, setYoutube] = useState(false)
   const dispatch = useDispatch()
 
@@ -22,8 +22,8 @@ const MovieDetail = () => {
   const signedInDisp = useSelector((state:RootState)=> state.signedIn.value)
 
   function watchlistHandler(){
-    userWatchlist={currentid,movie}
-    console.log(userWatchlist)
+    userWatchlist={currentid,movie:[movie]}
+    // console.log(userWatchlist)
     dispatch(addwatchlist(userWatchlist))
   }
   const opts = {

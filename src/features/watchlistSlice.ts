@@ -13,7 +13,7 @@ import {createSlice, PayloadAction}  from "@reduxjs/toolkit"
 
 
 const initialState = {
-  value:[{currentid:'',movie:{}}]
+  value:[{currentid:'',movie:[{}]}]
 }
 
 export const watchlistSlice = createSlice({
@@ -21,7 +21,13 @@ export const watchlistSlice = createSlice({
 initialState,
   reducers:{
     addwatchlist:(state,action) => {
-      state.value=action.payload
+      //  state.value.currentid===''?state.value=action.payload:state.value.movie.push(action.payload.movie[0])
+      // let idExist = true
+      state.value.map((item, index)=>item.currentid===action.payload.currentid?item.movie.push(action.payload.movie[0]):null)
+      // state.value.map((item, index)=>item.currentid===action.payload.currentid&&item.movie.push('hi'))
+      const exist = i => i.currentid===action.payload.currentid
+      !state.value.some(exist)&&state.value.push(action.payload)
+      // !state.value.includes(action.payload.currentid)&&state.value.push(action.payload)
       // localStorage.setItem('watchlist', JSON.stringify(state.value))
     },
   }
