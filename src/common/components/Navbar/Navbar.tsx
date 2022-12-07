@@ -28,7 +28,7 @@ const Navbar: React.FC = () => {
   const current = useSelector((state:RootState)=> state.currentUser.value)
   const signedInDisp = useSelector((state:RootState)=> state.signedIn.value)
 
-console.log(current,signedInDisp)
+// console.log(current,signedInDisp)
   useEffect(() => {
     function refHandler(e: Event) {
       if (

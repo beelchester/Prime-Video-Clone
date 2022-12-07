@@ -4,7 +4,7 @@ const current = localStorage.getItem('currentUser') !== null? JSON.parse(localSt
 
 
 interface State{
-  value:{id?:number,
+  value:{id?:string,
   name?:string,
   email?:string,
   password?:number}

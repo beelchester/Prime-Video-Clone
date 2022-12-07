@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../app/store";
 import Footer from "../Footer/Footer";
@@ -9,22 +9,40 @@ import axios from "axios";
 import instance from "../../../API/axios";
 import requests, { API_KEY } from "../../../API/request";
 import { NavLink } from "react-router-dom";
-import { addwatchlist } from "../../../features/watchlistSlice";
+import { addwatchlist , removewatchlist} from "../../../features/watchlistSlice";
 
 const MovieDetail = () => {
+const [dependancy, setDependancy] = useState(false)
   const movie = useSelector((state: RootState) => state.movie.value);
   // console.log(movie);
   const [youtube, setYoutube] = useState(false)
   const dispatch = useDispatch()
-
+  const watchlist = useSelector((state:RootState)=> state.watchlist.value)
+  const current = useSelector((state:RootState)=> state.currentUser.value)
+  const [watchlisted, setWatchlisted] = useState(false)
+  
+  
+  
   let userWatchlist
   const currentid = useSelector((state:RootState)=> state.currentUser.value.id)
   const signedInDisp = useSelector((state:RootState)=> state.signedIn.value)
-
+  useEffect(() => {
+    watchlist.map(i=>{ i.currentid===current.id&&i.movie.includes(movie)&&setWatchlisted(true)})
+  }, [])
+  console.log(watchlisted)
+  
   function watchlistHandler(){
+    setDependancy(true)
     userWatchlist={currentid,movie:[movie]}
-    // console.log(userWatchlist)
-    dispatch(addwatchlist(userWatchlist))
+    if(!watchlisted){
+      dispatch(addwatchlist(userWatchlist))
+      setWatchlisted(true)
+    }
+    else{
+      setWatchlisted(false)
+    dispatch(removewatchlist(userWatchlist))
+  }
+  setDependancy(false)
   }
   const opts = {
     width: '1366px',
@@ -42,7 +60,7 @@ const MovieDetail = () => {
     }
     else
       setTrailer( request.data.videos.results.find(vid => vid.type === 'Trailer'))
-      console.log(request,trailer)
+      // console.log(request,trailer)
       return request
     }
   useEffect(() => {
@@ -101,8 +119,8 @@ const MovieDetail = () => {
             </button>
             <NavLink to={`${!signedInDisp?'/signin':'/detail'}`}>
             <button onClick={watchlistHandler} className="h-11 w-11 bg-[#425265] ml-8 rounded-full flex items-center justify-center transition hover:ease-in-out hover:bg-[#536377]">
-              <h1 className="text-[#ced3da] text-[2.7rem] font-[300] mb-[0.4rem]">
-                +
+              <h1 className={`text-[#ced3da] text-[2.7rem] font-[300] ${!watchlisted?'mb-[0.4rem]':'mb-[0.75rem]'} `}>
+                {!watchlisted?'+':'x'}
               </h1>
             </button>
             </NavLink>

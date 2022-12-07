@@ -87,7 +87,7 @@ const navigate= useNavigate()
               <h1 className="text-[#c40000] font-sans mt-[12px] text-[17px] font-[500]">There was a problem</h1>
               <ul>
               {!validEmail&&validData&&<li className="text-[12px] font-[500] mt-[2.5px]">We cannot find an account with that email address </li>}
-              {!validPassword&&validData&&<li className="text-[12px] font-[500] mt-[2.5px]">Your password is incorrect </li>}
+              {validEmail&&!validPassword&&validData&&<li className="text-[12px] font-[500] mt-[2.5px]">Your password is incorrect </li>}
               {!validData&&<li className="text-[12px] font-[500] mt-[2.5px]">Please enter the data</li>}
               </ul>
             </div>

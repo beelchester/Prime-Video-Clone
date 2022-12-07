@@ -1,6 +1,6 @@
 import {createSlice, PayloadAction}  from "@reduxjs/toolkit"
 
-// const current = localStorage.getItem('currentUser') !== null? JSON.parse(localStorage.getItem('currentUser')):{}
+const wl = localStorage.getItem('watchlist') !== null? JSON.parse(localStorage.getItem('watchlist')):[{currentid:'',movie:[{}]}]
 
 
 // interface State{
@@ -13,7 +13,7 @@ import {createSlice, PayloadAction}  from "@reduxjs/toolkit"
 
 
 const initialState = {
-  value:[{currentid:'',movie:[{}]}]
+  value:wl
 }
 
 export const watchlistSlice = createSlice({
@@ -28,10 +28,12 @@ initialState,
       const exist = i => i.currentid===action.payload.currentid
       !state.value.some(exist)&&state.value.push(action.payload)
       // !state.value.includes(action.payload.currentid)&&state.value.push(action.payload)
-      // localStorage.setItem('watchlist', JSON.stringify(state.value))
+      localStorage.setItem('watchlist', JSON.stringify(state.value))
     },
+    removewatchlist:(state,action) => {
+      state.value.map((item, index)=>item.currentid===action.payload.currentid&&item.movie.splice(item.movie.indexOf(action.payload.movie[0]),1))}
   }
 })
 
-export const { addwatchlist} = watchlistSlice.actions
+export const { addwatchlist, removewatchlist} = watchlistSlice.actions
 export default watchlistSlice.reducer
