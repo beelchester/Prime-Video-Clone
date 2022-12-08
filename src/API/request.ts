@@ -19,6 +19,7 @@ interface requests{
   fetchManorama : string;
   fetchMubi : string;
   fetchShortstv: string;
+  fetchMovie: string;
 }
 let id
 const requests:requests = {

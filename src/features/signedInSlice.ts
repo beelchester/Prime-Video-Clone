@@ -1,6 +1,6 @@
 import {createSlice, PayloadAction}  from "@reduxjs/toolkit"
 
-const signInState = localStorage.getItem('signedIn') !== null? JSON.parse(localStorage.getItem('signedIn')):false
+const signInState = JSON.parse(localStorage.getItem('signedIn')|| 'false')
 
 
 interface State{

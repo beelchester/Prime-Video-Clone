@@ -3,83 +3,117 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../app/store";
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
-import {GrPlayFill} from "react-icons/gr"
-import Youtube from "react-youtube"
+import { GrPlayFill } from "react-icons/gr";
+import Youtube from "react-youtube";
 import axios from "axios";
 import instance from "../../../API/axios";
 import requests, { API_KEY } from "../../../API/request";
 import { NavLink } from "react-router-dom";
-import { addwatchlist , removewatchlist} from "../../../features/watchlistSlice";
+import {
+  addwatchlist,
+  removewatchlist,
+} from "../../../features/watchlistSlice";
 
 const MovieDetail = () => {
-const [dependancy, setDependancy] = useState(false)
+  const [dependancy, setDependancy] = useState(false);
   const movie = useSelector((state: RootState) => state.movie.value);
   // console.log(movie);
-  const [youtube, setYoutube] = useState(false)
-  const dispatch = useDispatch()
-  const watchlist = useSelector((state:RootState)=> state.watchlist.value)
-  const current = useSelector((state:RootState)=> state.currentUser.value)
-  const [watchlisted, setWatchlisted] = useState(false)
-  
-  
-  
-  let userWatchlist
-  const currentid = useSelector((state:RootState)=> state.currentUser.value.id)
-  const signedInDisp = useSelector((state:RootState)=> state.signedIn.value)
+  const [youtube, setYoutube] = useState(false);
+  const dispatch = useDispatch();
+  const watchlist = useSelector((state: RootState) => state.watchlist.value);
+  const current = useSelector((state: RootState) => state.currentUser.value);
+  const [watchlisted, setWatchlisted] = useState(false);
+
+  let userWatchlist;
+  const currentid = useSelector(
+    (state: RootState) => state.currentUser.value.id
+  );
+  const signedInDisp = useSelector((state: RootState) => state.signedIn.value);
   useEffect(() => {
-    watchlist.map(i=>{ i.currentid===current.id&&i.movie.includes(movie)&&setWatchlisted(true)})
-  }, [])
-  console.log(watchlisted)
-  
-  function watchlistHandler(){
-    setDependancy(true)
-    userWatchlist={currentid,movie:[movie]}
-    if(!watchlisted){
-      dispatch(addwatchlist(userWatchlist))
-      setWatchlisted(true)
+    watchlist.map(
+      (i: {
+        currentid: string | undefined;
+        movie: {
+          backdrop_path?: string | undefined;
+          original_title?: string | undefined;
+          original_name?: string | undefined;
+          overview?: string | undefined;
+          original_language?: string | undefined;
+          release_date?: string | undefined;
+          first_air_date?: string | undefined;
+        }[];
+      }) => {
+        i.currentid === current.id &&
+          i.movie.includes(movie) &&
+          setWatchlisted(true);
+      }
+    );
+  }, []);
+  console.log(watchlisted);
+
+  function watchlistHandler() {
+    setDependancy(true);
+    userWatchlist = { currentid, movie: [movie] };
+    if (!watchlisted) {
+      dispatch(addwatchlist(userWatchlist));
+      setWatchlisted(true);
+    } else {
+      setWatchlisted(false);
+      dispatch(removewatchlist(userWatchlist));
     }
-    else{
-      setWatchlisted(false)
-    dispatch(removewatchlist(userWatchlist))
-  }
-  setDependancy(false)
+    setDependancy(false);
   }
   const opts = {
-    width: '1366px',
-    height:'500px',
+    width: "1366px",
+    height: "500px",
     playerVars: {
       autoplay: 1,
     },
-  }
+  };
 
- const [trailer, setTrailer] = useState('')
-  async function fetchData(movie){
-    const request = await  instance.get(`/${movie.media_type? movie.media_type : 'movie'}/${movie.id}?api_key=${API_KEY}&append_to_response=videos`)
-    if(request.data.videos.results.find(vid => vid.type === 'Trailer').length===0){
-      console.log('error')
-    }
-    else
-      setTrailer( request.data.videos.results.find(vid => vid.type === 'Trailer'))
-      // console.log(request,trailer)
-      return request
-    }
+  const [trailer, setTrailer] = useState<any>("");
+  async function fetchData(movie: any) {
+    const request = await instance.get(
+      `/${movie.media_type ? movie.media_type : "movie"}/${
+        movie.id
+      }?api_key=${API_KEY}&append_to_response=videos`
+    );
+    if (
+      request.data.videos.results.find(
+        (vid: { type: any }) => vid.type === "Trailer"
+      ).length === 0
+    ) {
+      console.log("error");
+    } else
+      setTrailer(
+        request.data.videos.results.find(
+          (vid: { type: any }) => vid.type === "Trailer"
+        )
+      );
+    // console.log(request,trailer)
+    return request;
+  }
   useEffect(() => {
-    fetchData(movie)
-  }, [])
+    fetchData(movie);
+  }, []);
   return (
     <>
-          {youtube&&
-          <div onClick={()=>setYoutube(false)} className="flex items-center justify-center fixed z-[100] h-[99.9vh] top-0 right-0 w-full bg-[#00000096] backdrop-blur-lg">
-            <Youtube opts={opts} videoId={trailer.key} />
-            </div>}
+      {youtube && (
+        <div
+          onClick={() => setYoutube(false)}
+          className="flex items-center justify-center fixed z-[100] h-[99.9vh] top-0 right-0 w-full bg-[#00000096] backdrop-blur-lg"
+        >
+          <Youtube opts={opts} videoId={trailer.key} />
+        </div>
+      )}
 
-     <style>
-              {`
+      <style>
+        {`
                 svg path {
                   stroke: white
                 }
                 `}
-            </style>
+      </style>
       <Navbar />
       <div className="pt-[4.5rem] bg-[#0F171E] h-[100vh] relative cursor-default">
         <div className="flex justify-end">
@@ -109,20 +143,25 @@ const [dependancy, setDependancy] = useState(false)
           </h1>
           <div className="flex items-center mt-[15px]">
             <button
-            onClick={()=> setYoutube(true)}
+              onClick={() => setYoutube(true)}
               className={`flex items-center justify-center text-white font-[500] text-lg w-[13rem] h-[4.25rem] rounded-[0.15rem] bg-[#0F79AF] hover:bg-[#159ee2] `}
             >
-              <GrPlayFill size={'28px'} className='mr-4' />
-              <h1>
-              Watch Trailer
-              </h1>
+              <GrPlayFill size={"28px"} className="mr-4" />
+              <h1>Watch Trailer</h1>
             </button>
-            <NavLink to={`${!signedInDisp?'/signin':'/detail'}`}>
-            <button onClick={watchlistHandler} className="h-11 w-11 bg-[#425265] ml-8 rounded-full flex items-center justify-center transition hover:ease-in-out hover:bg-[#536377]">
-              <h1 className={`text-[#ced3da] text-[2.7rem] font-[300] ${!watchlisted?'mb-[0.4rem]':'mb-[0.75rem]'} `}>
-                {!watchlisted?'+':'x'}
-              </h1>
-            </button>
+            <NavLink to={`${!signedInDisp ? "/signin" : "/detail"}`}>
+              <button
+                onClick={watchlistHandler}
+                className="h-11 w-11 bg-[#425265] ml-8 rounded-full flex items-center justify-center transition hover:ease-in-out hover:bg-[#536377]"
+              >
+                <h1
+                  className={`text-[#ced3da] text-[2.7rem] font-[300] ${
+                    !watchlisted ? "mb-[0.4rem]" : "mb-[0.75rem]"
+                  } `}
+                >
+                  {!watchlisted ? "+" : "x"}
+                </h1>
+              </button>
             </NavLink>
           </div>
           <div className="h-[5rem] w-[20rem] mt-[0.8rem] text-[#91a7b4] font-ptSans text-[18px]">

@@ -1,6 +1,6 @@
 import {createSlice, PayloadAction}  from "@reduxjs/toolkit"
 
-const current = localStorage.getItem('currentUser') !== null? JSON.parse(localStorage.getItem('currentUser')):{}
+const current = JSON.parse(localStorage.getItem('currentUser')|| '{}')
 
 
 interface State{

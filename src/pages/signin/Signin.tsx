@@ -24,7 +24,7 @@ export default function Signin  ()  {
   const dispatch = useDispatch()
   console.log(User)
   console.log(current)
-  let userDetail
+  let userDetail: { email: string; password: string; }
 
 // useEffect(() => {
 //   dispatch(currentUser([]))

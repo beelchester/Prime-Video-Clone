@@ -120,7 +120,7 @@ let user
                 </h1>
               </div>
               <input
-                type="text"
+                type="password"
                 value={password}
                 placeholder={'At least 6 characters'}
                 onChange={(e)=>setPassword(e.target.value)}
@@ -135,7 +135,7 @@ let user
                 </h1>
               </div>
               <input
-                type="text"
+                type="password"
                 value={rePassword}
                 onChange={(e)=>setRePassword(e.target.value)}
                 className="border-[0.1px] rounded-[0.13rem] border-[#808080af]  mt-[0.15rem] w-full h-[1.95rem]
