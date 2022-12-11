@@ -1,6 +1,6 @@
 import {createSlice, PayloadAction}  from "@reduxjs/toolkit"
 
-const users = JSON.parse(localStorage.getItem('userlist')|| '[]')
+const users = JSON.parse(localStorage.getItem('userList')|| '[]')
 
 interface Object{
     id?:number,
