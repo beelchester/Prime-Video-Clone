@@ -7,8 +7,8 @@ const FamilyFriendly: React.FC = () => {
   const signedInDisp = useSelector((state:RootState)=> state.signedIn.value)
   return (
     <div>
-      <img src={familyfriendly} />
-      <div className="absolute top-[139rem] mt-[5.4rem] ml-[4.3rem] w-[36rem] ">
+      <img src={familyfriendly} className={"2xl:w-[120rem]"} />
+      <div className="absolute top-[139rem] mt-[5.4rem] 2xl:mt-[45rem] ml-[4.3rem] w-[36rem] ">
         <h1 className="text-[2.57rem] font-sans font-[400]  ">
           Family Friendly
         </h1>

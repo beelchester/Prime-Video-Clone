@@ -7,7 +7,7 @@ import HomeFooter from "./components/HomeFooter";
 import Welcome from "./components/Welcome";
 const Home:React.FC = () => {
   return (
-    <div className="h-[180rem] bg-[#222222]">
+    <div className=" bg-[#222222]">
       <Navbar/>
       <Welcome/>
       <FavChannels/>

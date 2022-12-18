@@ -10,7 +10,7 @@ import shorts from "../../../assets/images/Home/shorts.png";
 
 const FavChannels: React.FC = () => {
   return (
-    <div className="absolute h-[537px] text-black w-full flex bg-[white] mt-[10.7rem]">
+    <div className="absolute h-[537px] 2xl:mt-[31rem] text-black w-full flex bg-[white] mt-[10.7rem]">
       <div className="h-full w-[50%] ">
         <div className="mt-[80px] pl-[70px] pr-[50px] leading-[50px] ">
           <h1 className="text-[2.57rem] font-sans font-[400] tracking-wide">
@@ -24,7 +24,7 @@ const FavChannels: React.FC = () => {
         </div>
       </div>
       <div className="h-full w-[50%] ">
-        <div className="mt-[55px] ml-[3px] h-[80%] grid grid-cols-3 w-[90%]">
+        <div className="mt-[55px] ml-[3px] 2xl:px-[7rem] h-[80%] grid grid-cols-3 w-[90%]">
           <button>
             <div className="hover:shadow-favChannel w-[12.5rem]">
               <img src={lionsgate} className="w-[12.5rem] " />
