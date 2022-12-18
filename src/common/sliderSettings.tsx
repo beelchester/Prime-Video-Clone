@@ -4,7 +4,7 @@ function MovieNextArrow(props:any) {
       const { className, style, onClick } = props;
       return (
             <div
-          className={`${className}  2xl:mt-0 hover:bg-[#00000079] bg-[#00000042] h-[173.8px] mt-[3.4px] w-[3rem] absolute right-[0px] z-20 `}
+          className={`${className}   hover:bg-[#00000079] bg-[#00000042] h-[173.8px] mt-[3.4px] w-[3rem] absolute right-[0px] z-20 `}
           style={{ ...style}}
           onClick={onClick}
           
