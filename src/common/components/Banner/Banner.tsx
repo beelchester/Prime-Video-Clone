@@ -15,7 +15,7 @@ const Banner: React.FC<props> = ({list}) => {
 
 
   return (
-    <div className='h-[273px] w-full banner'>
+    <div className='h-[273px] w-full 2xl:w-[120rem] banner 2xl:mb-[5.5rem]'>
       <Slider {...bannerSliderSettings} >
   {list?.map( image  =>  <ImageContainer key={list.indexOf(image)} image={image}/>
 
