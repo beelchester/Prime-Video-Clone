@@ -169,7 +169,7 @@ const Navbar: React.FC = () => {
         </div>
 
         {/* <div onClick={searchFieldTHandler} className="w-[26px] h-[26px] bg-black fixed left-[71rem]"></div> */}
-        <button ref={searchRef} className="ml-5" onClick={searchFieldTHandler}>
+        <button ref={searchRef} className="ml-5" onClick={() => setSearchField(prev => !prev)}>
           <AiOutlineSearch color={"#BBBEC1"} size={"26px"} />
         </button>
         <button className="flex  ml-[1.18rem] group">
