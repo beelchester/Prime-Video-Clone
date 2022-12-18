@@ -64,8 +64,8 @@ const MovieDetail = () => {
     setDependancy(false);
   }
   const opts = {
-    width: "1366px",
-    height: "500px",
+    width: "1800px",
+    height: "700px",
     playerVars: {
       autoplay: 1,
     },
@@ -121,16 +121,16 @@ const MovieDetail = () => {
             style={{
               backgroundImage: `url("https://image.tmdb.org/t/p/original/${movie?.backdrop_path}")`,
             }}
-            className="h-[538px]  bg-cover bg-no-repeat bg-center w-[59.7em] mb-[1.48rem]"
+            className="h-[538px]  bg-cover bg-no-repeat bg-center w-[59.7em] 2xl:w-[90rem] 2xl:h-[700px] mb-[1.48rem]"
           ></div>
         </div>
-        <div className="font-sans w-[8px] h-[538px] flex flex-col text-white absolute z-30 top-[4.5rem] left-[23rem]   backdrop-blur-[4px]   pl-[48px]"></div>
-        <div className="font-sans w-[59.8rem] h-[538px] flex flex-col text-white absolute z-10 top-[4.5rem] left-[25.6rem] bg-[#0000006b]   pl-[48px]"></div>
+        <div className="font-sans w-[8px] h-[538px] flex flex-col text-white absolute z-30 top-[4.5rem] left-[23rem] 2xl:left-[28.1rem]  2xl:h-[700px] backdrop-blur-[4px]   pl-[48px]"></div>
+        <div className="font-sans w-[59.8rem] 2xl:w-[90.1rem] h-[538px] flex flex-col text-white absolute z-10 top-[4.5rem] left-[25.6rem] 2xl:left-[30.7rem] 2xl:h-[700px] bg-[#0000006b]   pl-[48px]"></div>
 
-        <div className="font-sans w-[59.8rem] h-[8px] flex flex-col text-white absolute z-30 top-[38.05rem] left-[25.5rem]   backdrop-blur-[4px]   pl-[48px]"></div>
-        <div className="font-sans w-[59.8rem] h-[3px] flex flex-col text-white absolute z-10 top-[38.1rem] left-[25.5rem] bg-[#00000042]   pl-[48px]"></div>
+        <div className="font-sans w-[59.8rem] 2xl:w-[90.1rem] h-[8px] flex flex-col text-white absolute z-30 top-[38.05rem] 2xl:top-[770px] left-[25.5rem] 2xl:left-[30.7rem]  backdrop-blur-[4px]   pl-[48px]"></div>
+        <div className="font-sans w-[59.8rem] 2xl:w-[90.1rem] h-[3px] flex flex-col text-white absolute z-10 top-[38.1rem] left-[25.5rem] 2xl:top-[771px] 2xl:left-[30.7rem] bg-[#00000042]   pl-[48px]"></div>
 
-        <div className="font-sans w-full h-[538px] flex flex-col text-white absolute z-40 top-[4.5rem]     pl-[48px]">
+        <div className="font-sans w-full h-[538px] flex flex-col text-white absolute z-40 top-[4.5rem] 2xl:top-[7rem]    pl-[48px]">
           <h1 className="text-[36px] mt-[40px] mb-[7px]">
             {movie?.original_title || movie?.original_name}
           </h1>
