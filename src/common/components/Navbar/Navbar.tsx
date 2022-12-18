@@ -155,7 +155,7 @@ const Navbar: React.FC = () => {
           id="search"
           className={` ${
             searchField ? "flex" : "hidden"
-          }  pl-1 items-center w-[15.5rem] rounded-[3px] border-[#ccccccbb] bg-[#1B242F] border-[1px] h-[40px] fixed top-[1rem] ${!signedInDisp?'left-[57.4rem]':'left-[54rem]'}`}
+          }  pl-1 items-center w-[15.5rem] rounded-[3px] border-[#ccccccbb] bg-[#1B242F] border-[1px] h-[40px] fixed top-[1rem] ${!signedInDisp?'right-[15.4rem]':'right-[20rem]'}`}
         >
           <div style={{
               backgroundImage:
