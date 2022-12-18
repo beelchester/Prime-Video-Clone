@@ -45,7 +45,7 @@ const CategDropDown: React.FC<props> = ({categDropT, categDropF}) => {
 <h1 className="mt-[10px] hover:text-white transport hover:ease-in-out hover:cursor-pointer w-[40px]">Tamil</h1>
 <h1 className="mt-[10px] hover:text-white transport hover:ease-in-out hover:cursor-pointer w-[65px]">Kannada</h1>
 </div>
-<div className="mt-[6px] ml-8  w-full h-[80%] text-[14.5px] text-[#8197A4] font-[500]">
+<div className="mt-[6px] ml-8 2xl:pr-[8.5rem] w-full h-[80%] text-[14.5px] text-[#8197A4] font-[500]">
 <h1 className="hover:cursor-pointer w-[75px] hover:text-white transport hover:ease-in-out">Malayalam</h1>
 <h1 className="mt-[10px]  hover:cursor-pointer w-[55px] hover:text-white transport hover:ease-in-out">Punjabi</h1>
 <h1 className="mt-[10px] hover:cursor-pointer w-[55px] hover:text-white transport hover:ease-in-out">Marathi</h1>
