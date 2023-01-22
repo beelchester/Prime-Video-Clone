@@ -1,5 +1,4 @@
-import dotenv from 'dotenv'
-dotenv.config()
+require('dotenv').config()
 import axios from 'axios';
 import jwt_decode from 'jwt-decode'
 
