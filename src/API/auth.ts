@@ -1,8 +1,8 @@
-require('dotenv').config()
+
 import axios from 'axios';
 import jwt_decode from 'jwt-decode'
 
-const BASE_URL = process.env.BASE_URL
+const BASE_URL = "https://prime-video-clone.onrender.com"
 
 export async function signup (name: String, email: String, password: String){
   const response = await axios.post(`${BASE_URL}/signup`,{
@@ -71,14 +71,14 @@ export async function updateWatchlist(id: String,watchlist: any){
 }
 
 export async function addToWatchlist(id:String, movie : any){
-  const response = await axios.patch(`${BASE_URL}/add/${id}`,{
+  const response = await axios.patch(`/${BASE_URL}/add/${id}`,{
     movie
   })
   return response.data
 }
 
 export async function removeFromWatchlist(id:String, movie : any){
-  const response = await axios.patch(`${BASE_URL}/remove/${id}`,{
+  const response = await axios.patch(`/${BASE_URL}/remove/${id}`,{
     movie
   })
   return response.data
