@@ -12,11 +12,15 @@ const mongoose = require("mongoose");
 mongoose.set('strictQuery', false)
 mongoose.connect(process.env.MONGO_URI);
 
-const db = mongoose.connection;
-db.on("error", err => console.log(err));
-db.once("open", () => {
-  console.log("MongoDB database connection established successfully");
-})
+const connect = async () => {
+  try{
+      await mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+      console.log("MongoDB database connection established successfully");
+  } catch(err) {
+      console.log(err);
+  }
+}
+connect();
 
 app.use(express.json())
 // app.use(express.static(path.join(__dirname, "../dist")))
