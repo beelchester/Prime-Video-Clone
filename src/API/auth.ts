@@ -2,7 +2,7 @@
 import axios from 'axios';
 import jwt_decode from 'jwt-decode'
 
-const BASE_URL = "https://prime-video-clone.onrender.com/auth/v1"
+const BASE_URL = "https://prime-video-clone.onrender.com/api/v1"
 
 export async function signup (name: String, email: String, password: String){
   const response = await axios.post(`${BASE_URL}/signup`,{
