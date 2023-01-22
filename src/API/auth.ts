@@ -71,14 +71,14 @@ export async function updateWatchlist(id: String,watchlist: any){
 }
 
 export async function addToWatchlist(id:String, movie : any){
-  const response = await axios.patch(`/${BASE_URL}/add/${id}`,{
+  const response = await axios.patch(`${BASE_URL}/add/${id}`,{
     movie
   })
   return response.data
 }
 
 export async function removeFromWatchlist(id:String, movie : any){
-  const response = await axios.patch(`/${BASE_URL}/remove/${id}`,{
+  const response = await axios.patch(`${BASE_URL}/remove/${id}`,{
     movie
   })
   return response.data
