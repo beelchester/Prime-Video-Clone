@@ -5,7 +5,7 @@
   "scripts": {
     "start": "netlify-lambda serve src",
     "dev": "vite",
-    "build": "netlify-lambda build src",
+    "build": "tsc && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
