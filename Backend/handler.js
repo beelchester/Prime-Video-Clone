@@ -17,14 +17,17 @@ db.once("open", () => {
 })
 
 app.use(express.json())
-app.use(express.static(path.join(__dirname, "../dist")))
+// app.use(express.static(path.join(__dirname, "../dist")))
 
 app.use("/api/v1/", userRouter);
 
 app.use ('*', (req, res) => {
   res.send('404 Not Found!!');   })
 
-// app.listen(4000, () => {
+app.use ('/.netlify/functions/handler', (req, res) => {
+  res.send('Test');   })
+
+// app.listen(4001, () => {
 //   console.log('Server is running on port 4000');
 // });
 
