@@ -7,7 +7,9 @@ interface State{
   value:{id?:string,
   name?:string,
   email?:string,
-  password?:number}
+  password?:number
+  watchlist?:any
+}
 }
 
 

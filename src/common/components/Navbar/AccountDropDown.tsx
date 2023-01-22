@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { logout } from "../../../API/auth";
 import { RootState } from "../../../app/store";
 import {currentUser} from "../../../features/currentUserSlice";
 import {signedIn} from "../../../features/signedInSlice";
@@ -14,8 +15,8 @@ const AccountDropDown: React.FC<props> = ({accountDrop}) => {
   const dispatch = useDispatch()
 
 function signOutHandler(){
-  dispatch(currentUser({}))
   dispatch(signedIn(false))
+  logout()
 }
   return (
     <>

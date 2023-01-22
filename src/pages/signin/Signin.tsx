@@ -8,6 +8,8 @@ import logo from "../../assets/logos/primevideoblack.png";
 import {currentUser} from "../../features/currentUserSlice";
 import {signedIn} from "../../features/signedInSlice";
 import SigninFooter from "./components/SigninFooter";
+import {getRefreshToken, isAuthenticated, login} from "../../API/auth"
+import { setWatchlist } from "../../features/watchlistSlice";
 export default function Signin  ()  {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -19,11 +21,12 @@ export default function Signin  ()  {
   const User = useSelector((state:RootState)=> state.addUser.value)
   const current = useSelector((state:RootState)=> state.currentUser.value)
   const signedInDisp = useSelector((state:RootState)=> state.signedIn.value)
-  console.log(signedInDisp)
+  // console.log(signedInDisp)
 
+  const [error, setError] = useState("")
   const dispatch = useDispatch()
-  console.log(User)
-  console.log(current)
+  // console.log(User)
+  // console.log(current)
   let userDetail: { email: string; password: string; }
 
 // useEffect(() => {
@@ -33,46 +36,57 @@ export default function Signin  ()  {
 const navigate= useNavigate()
 
 
-  function signUpHandler(){
+  async function signInHandler(){
     if(email===''||password===''){
     setValidData(false) 
     return}
     else{setValidData(true)}
+    try {
+      const {id, name, watchlist} = await login(email,password)
+      dispatch(currentUser({id, name}))
+      dispatch(setWatchlist({watchlist}))
+      dispatch(signedIn(true))
+      setEmail('')
+      setPassword('')
+      navigate('/store')
+      
+    } catch (error) {
+      setError((error as any).response.data.message)
+    }
+  }
 
-    userDetail={email,password}
-    for (var i = 0; i < User.length; i++) {
-      if(userDetail.email===User[i].email){
-        setValidEmail(true)
-        console.log('email exist')
-        break
-      }
-      else{
-        setValidEmail(false)
-        console.log('email dont exist')
-      }
-    }
-      for (var i = 0; i < User.length; i++) {
-      if(userDetail.email===User[i].email&&userDetail.password===User[i].password){
-        setValidPassword(true)
-        console.log('password exist')
-        break
-      }
-      else{
-        setValidPassword(false)
-        console.log('password dont exist')
-      }
-    }
-    User.map(e=>{  
-    if(userDetail.email===e.email&&userDetail.password===e.password){
-    dispatch(currentUser(e))
-    dispatch(signedIn(true))
-    setEmail('')
-    setPassword('')
-    navigate('/store')
-  }
-    })
+    // userDetail={email,password}
+    // for (var i = 0; i < User.length; i++) {
+    //   if(userDetail.email===User[i].email){
+    //     setValidEmail(true)
+    //     console.log('email exist')
+    //     break
+    //   }
+    //   else{
+    //     setValidEmail(false)
+    //     console.log('email dont exist')
+    //   }
+    // }
+    //   for (var i = 0; i < User.length; i++) {
+    //   if(userDetail.email===User[i].email&&userDetail.password===User[i].password){
+    //     setValidPassword(true)
+    //     console.log('password exist')
+    //     break
+    //   }
+    //   else{
+    //     setValidPassword(false)
+    //     console.log('password dont exist')
+    //   }
+    // }
+    // User.map(e=>{  
+    // if(userDetail.email===e.email&&userDetail.password===e.password){
+    // dispatch(currentUser(e))
+    // dispatch(signedIn(true))
     
-  }
+  // }
+  //   }
+    
+  // }
 
   return (
     <div>
@@ -81,17 +95,15 @@ const navigate= useNavigate()
           <img src={logo} />
         </div>
         <div className="flex justify-center items-center w-full min-h-[30.2rem] flex-col">
-        {!validEmail||!validPassword||!validData? <div className="min-h-[4.65rem] w-[21.9rem] flex mt-5 mb-[14px] border border-[#c40000] rounded pb-[0.95rem]">
+      {error!==''&& <div className="min-h-[4.65rem] w-[21.9rem] flex mt-5 mb-[14px] border border-[#c40000] rounded pb-[0.95rem]">
             <TfiAlert color="#c40000" size={'30px'} className="mt-[9px] ml-[18px]"/>
              <div className="ml-4">
               <h1 className="text-[#c40000] font-sans mt-[12px] text-[17px] font-[500]">There was a problem</h1>
               <ul>
-              {!validEmail&&validData&&<li className="text-[12px] font-[500] mt-[2.5px]">We cannot find an account with that email address </li>}
-              {validEmail&&!validPassword&&validData&&<li className="text-[12px] font-[500] mt-[2.5px]">Your password is incorrect </li>}
-              {!validData&&<li className="text-[12px] font-[500] mt-[2.5px]">Please enter the data</li>}
+              <li className="text-[12px] font-[500] mt-[2.5px]">{error} </li>
               </ul>
             </div>
-          </div>:''}
+          </div>}
           <div className={` flex justify-center items-center rounded-[4px] w-[21.9rem] h-[27.4rem] ${!validEmail||!validPassword||!validData?'mb-[2rem]':'mb-[0.5rem]'}  border-[0.1px] border-[#b9b9b97c]`}>
             <div className="p-0 w-[18.5rem] h-full ">
               <h1 className="font-ptSans  mt-[0.95rem] text-[1.8rem] ">
@@ -120,7 +132,7 @@ const navigate= useNavigate()
                 onChange={(e)=>setPassword(e.target.value)}
                 className={`border-[0.1px] rounded-[0.13rem] border-[#808080af]  mt-[0.15rem] w-full h-[1.95rem]  focus:outline-none focus:border-[rgb(236,109,4)] focus:border-[1.5px] focus:shadow-inputField text-[0.8rem] pl-[6px]`}
               />
-              <button onClick={signUpHandler} className="border-[1px] border-[#30303085] rounded-[3px] mt-[1.35rem] font-ptSans text-[0.85rem] w-full h-[1.95rem] bg-yellowGradient1 hover:bg-yellowGradient2">
+              <button onClick={signInHandler} className="border-[1px] border-[#30303085] rounded-[3px] mt-[1.35rem] font-ptSans text-[0.85rem] w-full h-[1.95rem] bg-yellowGradient1 hover:bg-yellowGradient2">
                 Sign in
               </button>
 

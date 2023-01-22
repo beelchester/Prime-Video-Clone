@@ -6,7 +6,38 @@ import Channels from "./pages/channels/Channels";
 import MovieDetail from "./common/components/MovieDetail/MovieDetail";
 import Signup from "./pages/signup/Signup";
 import MyStuff from "./pages/mystuff/MyStuff";
+import { useEffect } from "react";
+import { getRefreshToken, getAccessToken, isAuthenticated, refreshToken } from "./API/auth";
+import { signedIn } from "./features/signedInSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "./app/store";
 const App = () => {
+  const signedInDisp = useSelector((state:RootState)=> state.signedIn.value)
+  const dispatch = useDispatch()
+  useEffect(() => {
+    console.log(isAuthenticated())
+    isAuthenticated()?dispatch(signedIn(true)):dispatch(signedIn(false))
+    refreshTokenIfExpired()
+    console.log(getRefreshToken())
+    console.log(getAccessToken())
+  }, [])
+  
+  // useEffect(() => {
+  //   dispatch(signedIn(true))
+  // }, [signedInDisp])
+  
+  
+  async function refreshTokenIfExpired() {
+    if (!getRefreshToken()) return
+    if(!isAuthenticated()){
+    try {
+        const newAccessToken = await refreshToken((getRefreshToken() as string))
+        localStorage.setItem('accessToken', newAccessToken)
+        dispatch(signedIn(true))
+      } catch (error) {
+        console.log((error as any).response.data.message)
+      }
+    }}
 
   return (
     <div className=' font-openSans h-[100vh] text-white '>

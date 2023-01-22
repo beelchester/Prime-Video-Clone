@@ -9,7 +9,6 @@ import CardContainer from "../../common/components/Card/CardContainer"
 import Footer from "../../common/components/Footer/Footer"
 import Navbar from "../../common/components/Navbar/Navbar"
 import { storeBanners } from "../../common/storeBanners"
-import {addwatchlist} from "../../features/watchlistSlice";
 
 const Store: React.FC = () => {
 

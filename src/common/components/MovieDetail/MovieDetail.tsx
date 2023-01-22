@@ -9,10 +9,9 @@ import axios from "axios";
 import instance from "../../../API/axios";
 import requests, { API_KEY } from "../../../API/request";
 import { NavLink } from "react-router-dom";
-import {
-  addwatchlist,
-  removewatchlist,
-} from "../../../features/watchlistSlice";
+
+import { addToWatchlist, removeFromWatchlist } from "../../../API/auth";
+import { setWatchlist } from "../../../features/watchlistSlice";
 
 const MovieDetail = () => {
   const [dependancy, setDependancy] = useState(false);
@@ -24,42 +23,30 @@ const MovieDetail = () => {
   const current = useSelector((state: RootState) => state.currentUser.value);
   const [watchlisted, setWatchlisted] = useState(false);
 
-  let userWatchlist;
-  const currentid = useSelector(
-    (state: RootState) => state.currentUser.value.id
-  );
+  // let userWatchlist;
+  // const currentWatchlist = useSelector(
+  //   (state: RootState) => state.currentUser.value.watchlist
+  // );
   const signedInDisp = useSelector((state: RootState) => state.signedIn.value);
   useEffect(() => {
-    watchlist.map(
-      (i: {
-        currentid: string | undefined;
-        movie: {
-          backdrop_path?: string | undefined;
-          original_title?: string | undefined;
-          original_name?: string | undefined;
-          overview?: string | undefined;
-          original_language?: string | undefined;
-          release_date?: string | undefined;
-          first_air_date?: string | undefined;
-        }[];
-      }) => {
-        i.currentid === current.id &&
-          i.movie.includes(movie) &&
+    watchlist.watchlist.map( (i :any)  => {
+          i.id===movie.id &&
           setWatchlisted(true);
       }
     );
   }, []);
-  console.log(watchlisted);
+  console.log(watchlist);
 
-  function watchlistHandler() {
+  async function watchlistHandler() {
     setDependancy(true);
-    userWatchlist = { currentid, movie: [movie] };
     if (!watchlisted) {
-      dispatch(addwatchlist(userWatchlist));
+      const watchlist =await  addToWatchlist((current.id as any), movie);
+      dispatch(setWatchlist({watchlist}))
       setWatchlisted(true);
     } else {
+      const watchlist = await removeFromWatchlist((current.id as any), movie);
+      dispatch(setWatchlist({watchlist}))
       setWatchlisted(false);
-      dispatch(removewatchlist(userWatchlist));
     }
     setDependancy(false);
   }
