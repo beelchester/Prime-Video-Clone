@@ -25,8 +25,6 @@ app.use(express.json())
 
 
 
-router.get('/', (req, res) => {
-  res.send('Test');   })
 
   app.use('/.netlify/functions/handler', userRouter);  // path must route to lambda
   app.use ('*', (req, res) => {
