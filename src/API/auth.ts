@@ -1,8 +1,12 @@
+import dotenv from 'dotenv'
+dotenv.config()
 import axios from 'axios';
 import jwt_decode from 'jwt-decode'
 
+const BASE_URL = process.env.BASE_URL
+
 export async function signup (name: String, email: String, password: String){
-  const response = await axios.post('/.netlify/functions/handler/signup',{
+  const response = await axios.post(`${BASE_URL}/signup`,{
    name, email, password
   })
   // console.log(response.data)
@@ -10,7 +14,7 @@ export async function signup (name: String, email: String, password: String){
 }
 
 export async function login(email: String,password: String){
-  const response = await axios.post('/.netlify/functions/handler/login',{
+  const response = await axios.post(`${BASE_URL}/login`,{
     email, password
   })
   localStorage.setItem('accessToken', response.data.accessToken)
@@ -50,7 +54,7 @@ export function getAccessToken() {
 
   export async function refreshToken(refreshToken: String){
     try {
-      const response = await axios.post('/.netlify/functions/handler/refresh_token',{
+      const response = await axios.post(`${BASE_URL}/refresh_token`,{
         refreshToken : refreshToken
       })
       
@@ -61,21 +65,21 @@ export function getAccessToken() {
   }
 
 export async function updateWatchlist(id: String,watchlist: any){
-  const response = await axios.patch(`/.netlify/functions/handler/users/${id}`,{
+  const response = await axios.patch(`${BASE_URL}/users/${id}`,{
     watchlist
   })
   return response.data
 }
 
 export async function addToWatchlist(id:String, movie : any){
-  const response = await axios.patch(`//.netlify/functions/handler/add/${id}`,{
+  const response = await axios.patch(`${BASE_URL}/add/${id}`,{
     movie
   })
   return response.data
 }
 
 export async function removeFromWatchlist(id:String, movie : any){
-  const response = await axios.patch(`//.netlify/functions/handler/remove/${id}`,{
+  const response = await axios.patch(`${BASE_URL}/remove/${id}`,{
     movie
   })
   return response.data
