@@ -2,7 +2,7 @@ import axios from 'axios';
 import jwt_decode from 'jwt-decode'
 
 export async function signup (name: String, email: String, password: String){
-  const response = await axios.post('api/v1/signup',{
+  const response = await axios.post('/.netlify/functions/handler/signup',{
    name, email, password
   })
   // console.log(response.data)
@@ -10,7 +10,7 @@ export async function signup (name: String, email: String, password: String){
 }
 
 export async function login(email: String,password: String){
-  const response = await axios.post('api/v1/login',{
+  const response = await axios.post('/.netlify/functions/handler/login',{
     email, password
   })
   localStorage.setItem('accessToken', response.data.accessToken)
@@ -50,7 +50,7 @@ export function getAccessToken() {
 
   export async function refreshToken(refreshToken: String){
     try {
-      const response = await axios.post('api/v1/refresh_token',{
+      const response = await axios.post('/.netlify/functions/handler/refresh_token',{
         refreshToken : refreshToken
       })
       
@@ -61,21 +61,21 @@ export function getAccessToken() {
   }
 
 export async function updateWatchlist(id: String,watchlist: any){
-  const response = await axios.patch(`api/v1/users/${id}`,{
+  const response = await axios.patch(`/.netlify/functions/handler/users/${id}`,{
     watchlist
   })
   return response.data
 }
 
 export async function addToWatchlist(id:String, movie : any){
-  const response = await axios.patch(`/api/v1/add/${id}`,{
+  const response = await axios.patch(`//.netlify/functions/handler/add/${id}`,{
     movie
   })
   return response.data
 }
 
 export async function removeFromWatchlist(id:String, movie : any){
-  const response = await axios.patch(`/api/v1/remove/${id}`,{
+  const response = await axios.patch(`//.netlify/functions/handler/remove/${id}`,{
     movie
   })
   return response.data
