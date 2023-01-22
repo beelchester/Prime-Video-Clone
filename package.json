@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node Backend/server.js",
     "dev": "vite",
-    
+    "build": "tsc && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
