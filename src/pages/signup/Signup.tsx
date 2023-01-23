@@ -67,14 +67,10 @@ let user
     } catch (error) {
       setError((error as any).response.data.message)
     }
-    // signup(name,email,password)
-      // user = {id:uuid(),name,email,password}
-      // console.log(user)
-      // dispatch(addUser(user))
+   
       
   }
   const User = useSelector((state:RootState)=> state.addUser.value)
-  // User.map(e=>console.log(e.id))
 
 
   return (

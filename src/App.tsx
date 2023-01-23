@@ -22,9 +22,7 @@ const App = () => {
     console.log(getAccessToken())
   }, [])
   
-  // useEffect(() => {
-  //   dispatch(signedIn(true))
-  // }, [signedInDisp])
+  
   
   
   async function refreshTokenIfExpired() {

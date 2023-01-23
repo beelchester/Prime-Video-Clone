@@ -1,7 +1,6 @@
 import {createSlice, PayloadAction}  from "@reduxjs/toolkit"
 import { isAuthenticated } from "../API/auth"
 
-// const signInState = JSON.parse(localStorage.getItem('signedIn')|| 'false')
 const signInState = isAuthenticated()
 
 interface State{

@@ -2,7 +2,6 @@ import {createSlice, PayloadAction}  from "@reduxjs/toolkit"
 
 const current = JSON.parse(localStorage.getItem('currentUser')|| '{}')
 
-
 interface State{
   value:{id?:string,
   name?:string,
@@ -11,8 +10,6 @@ interface State{
   watchlist?:any
 }
 }
-
-
 
 const initialState:State = {
   value:current

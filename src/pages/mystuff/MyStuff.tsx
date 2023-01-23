@@ -10,9 +10,7 @@ console.log(current,watchlist)
     <>
     <Navbar/>
     <div className='bg-[#0F171E]  pt-[4.5rem] min-h-full'>
-      {/* {watchlist.map((i : any)=> */}
       <Watchlist list={watchlist.watchlist} />
-        {/* )} */}
     </div>
     </>
   )

@@ -36,17 +36,7 @@ const Store: React.FC = () => {
     fetchData()
   }, [])
 
-  // const [romanceList, setRomanceList] = useState([])
-  // useEffect(() => {
-  //   async function fetchData(){
-  //     const request = await  instance.get(requests.fetchRomance)
-  //     setRomanceList(
-  //       request.data.results
-  //     )
-  //     return request
-  //   }
-  //   fetchData()
-  // }, [])
+  
 
   const [comedyList, setComedyList] = useState([])
   useEffect(() => {
@@ -154,7 +144,6 @@ const Store: React.FC = () => {
     <Banner list={storeBanners}/>
     <CardContainer type="rent" list={trendingList} text="New release movies"/>
     <CardContainer type="rent" list={actionList} text="Action and adventure movies"/>
-    {/* <CardContainer type="rent" list={romanceList} text="Romance movies"/> */}
     <CardContainer type="rent" list={familyList} text="Kids and family movies"/>
     <CardContainer type="rent" list={dramaList} text="Drama movies"/>
     <CardContainer type="rent" list={SFList} text="Science fiction movies"/>

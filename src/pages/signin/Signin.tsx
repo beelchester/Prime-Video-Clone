@@ -21,18 +21,13 @@ export default function Signin  ()  {
   const User = useSelector((state:RootState)=> state.addUser.value)
   const current = useSelector((state:RootState)=> state.currentUser.value)
   const signedInDisp = useSelector((state:RootState)=> state.signedIn.value)
-  // console.log(signedInDisp)
 
   const [error, setError] = useState("")
   const dispatch = useDispatch()
-  // console.log(User)
-  // console.log(current)
+ 
   let userDetail: { email: string; password: string; }
 
-// useEffect(() => {
-//   dispatch(currentUser([]))
-//   dispatch(signedIn(false))
-// }, [])
+
 const navigate= useNavigate()
 
 
@@ -55,38 +50,7 @@ const navigate= useNavigate()
     }
   }
 
-    // userDetail={email,password}
-    // for (var i = 0; i < User.length; i++) {
-    //   if(userDetail.email===User[i].email){
-    //     setValidEmail(true)
-    //     console.log('email exist')
-    //     break
-    //   }
-    //   else{
-    //     setValidEmail(false)
-    //     console.log('email dont exist')
-    //   }
-    // }
-    //   for (var i = 0; i < User.length; i++) {
-    //   if(userDetail.email===User[i].email&&userDetail.password===User[i].password){
-    //     setValidPassword(true)
-    //     console.log('password exist')
-    //     break
-    //   }
-    //   else{
-    //     setValidPassword(false)
-    //     console.log('password dont exist')
-    //   }
-    // }
-    // User.map(e=>{  
-    // if(userDetail.email===e.email&&userDetail.password===e.password){
-    // dispatch(currentUser(e))
-    // dispatch(signedIn(true))
-    
-  // }
-  //   }
-    
-  // }
+  
 
   return (
     <div>

@@ -8,7 +8,6 @@ export async function signup (name: String, email: String, password: String){
   const response = await axios.post(`${BASE_URL}/signup`,{
    name, email, password
   })
-  // console.log(response.data)
   return response.data
 }
 
