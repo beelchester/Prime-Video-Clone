@@ -1,27 +1,33 @@
 
 # Prime Video Clone
+## Movie app with watchlist management and trailers
 
-Users can sign in, add movies/shows to watchlist and watch trailers
+The app enables users to sign in and access a large collection of movies and shows from the TMDB API.
+Users can manage their watchlist and view trailers conveniently within the app.
+Express is used for building REST APIs and MongoDB for efficient and scalable data storage.
 
-Made using React, TypeScript, Redux Toolkit, Router, TMDB API and TailwindCSS
+## Tools Used
+React, Redux, TailwindCSS, Express, MongoDB
 
-## Home
-![Home](https://user-images.githubusercontent.com/73148455/208302947-e99599b2-cd1b-419d-955b-165e60e349f4.gif)
-
-## Store
-![Store](https://user-images.githubusercontent.com/73148455/208302968-f36efcb1-3b0b-48d6-866a-11db5bcf5afd.gif)
-
-## Channels
-![Channels](https://user-images.githubusercontent.com/73148455/208302975-235926a1-7113-4026-8e3f-7568a503f45e.gif)
-
-## Sign In
-![signin](https://user-images.githubusercontent.com/73148455/208302990-400901c6-5a7f-4088-84fa-c312b8fe1bb3.gif)
-
-## Trailer
-![Trailer](https://user-images.githubusercontent.com/73148455/208303010-04c1717a-bc6d-42fd-b411-3ce9bde1c39f.gif)
-
-## Watchlist
-![Watchlist](https://user-images.githubusercontent.com/73148455/208303024-d4ddf4bf-2a81-4e17-8ef1-c2de3a33007d.gif)
+## Live Preview
+Check out the live preview of Prime Video Clone here: https://primevideoclonebysahil.netlify.app/
 
 
-Netlify : https://primevideoclonebysahil.netlify.app/
+
+https://user-images.githubusercontent.com/73148455/234531275-dcea3c44-d6fc-444b-8fd0-73830a6750cd.mp4
+
+
+
+### Contributing
+If you'd like to contribute to Prime Video Clone, please follow these steps:
+1. Fork the repository
+2. Create a new branch
+3. Make your changes and commit them
+4. Push your changes to your forked repository
+5. Open a pull request
+
+### Bug Reports and Feature Requests
+If you encounter any bugs or have a feature request, please open an issue in the [Issues](https://github.com/sahilyeole/Prime-Video-Clone/issues) section of this repository.
+
+### License
+Attendance Criteria Manager is licensed under the [MIT License](https://github.com/sahilyeole/Prime-Video-Clone/blob/master/LICENSE).
