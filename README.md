@@ -7,7 +7,10 @@ Users can manage their watchlist and view trailers conveniently within the app.
 Express is used for building REST APIs and MongoDB for efficient and scalable data storage.
 
 ## Tools Used
-React, Redux, TailwindCSS, Express, MongoDB
+Frontend: React, Redux, TailwindCSS, Express, MongoDB
+Backend: Express, MongoDB, JWT Authentication
+
+Backend Repo : https://github.com/sahilyeole/Prime-Video-Clone-Backend
 
 ## Live Preview
 Check out the live preview of Prime Video Clone here: https://primevideoclonebysahil.netlify.app/
